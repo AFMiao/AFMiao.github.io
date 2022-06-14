@@ -212,12 +212,34 @@
 <h4 id="连接对象和引用"><a href="#连接对象和引用" class="headerlink" title="连接对象和引用"></a>连接对象和引用</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Dog</span> <span class="variable">myDog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br></pre></td></tr></table></figure>
 
 <p>将新的<code>Dog</code>赋值给<code>myDog</code>这个引用变量.</p>
-<h3 id="垃圾收集堆上的生活"><a href="#垃圾收集堆上的生活" class="headerlink" title="垃圾收集堆上的生活"></a>垃圾收集堆上的生活</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Book</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Book</span>();</span><br><span class="line"><span class="type">Book</span> <span class="variable">c</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Book</span>();</span><br></pre></td></tr></table></figure>
+<h3 id="生活在垃圾处理堆上"><a href="#生活在垃圾处理堆上" class="headerlink" title="生活在垃圾处理堆上"></a>生活在垃圾处理堆上</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Book</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Book</span>();</span><br><span class="line"><span class="type">Book</span> <span class="variable">c</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Book</span>();</span><br></pre></td></tr></table></figure>
 
 <p>声明两个<code>Book</code>的引用变量并创建两个<code>Book</code>对象, 然后将<code>Book</code>对象赋值给引用变量. 现在这两个<code>Book</code>对象储存在堆上.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Book</span> <span class="variable">d</span> <span class="operator">=</span> c;</span><br></pre></td></tr></table></figure>
 
 <p>声明新的<code>Book</code>引用变量, 但不床啊金新的<code>Book</code>对象而将变量<code>c</code>的值赋值给变量<code>d</code>. 这表示”将<code>c</code>的字节组合拷贝给变量<code>d</code>“. 此时的<code>c</code>和<code>d</code><strong>引用到同一对象</strong>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c = b;</span><br></pre></td></tr></table></figure>
+
+<p>将变量<code>b</code>的值拷贝给变量<code>c</code>. 此时, <code>b</code>和<code>c</code>两者都引用相同的对象.</p>
+<h3 id="堆上的生与死"><a href="#堆上的生与死" class="headerlink" title="堆上的生与死"></a>堆上的生与死</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Book</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Book</span>();</span><br><span class="line"><span class="type">Book</span> <span class="variable">c</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Book</span>();</span><br></pre></td></tr></table></figure>
+
+<p>声明两个<code>Book</code>的引用变量并创建两个<code>Book</code>对象, 然后将<code>Book</code>对象赋值给引用变量. 现在这两个<code>Book</code>对象生活在堆上.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b = c;</span><br></pre></td></tr></table></figure>
+
+<p>将变量<code>c</code>的值赋给变量<code>b</code>. 两个变量带有相同的值. 此时, 对象1被抛弃且能够作垃圾收集器(GC).</p>
+<p>此时, 对象1已经没有引用, 称为无法存取的变量.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<p>将<code>null</code>值赋给<code>c</code>. 这代表它不再引用任何事物, 但还是可以被制定引用其他<code>Book</code>的引用变量.</p>
+<p>对象2还引用到, 随意不能够作垃圾收集器.</p>
+<h3 id="数组犹如杯架"><a href="#数组犹如杯架" class="headerlink" title="数组犹如杯架"></a>数组犹如杯架</h3><ol>
+<li>声明一个<code>int</code>数组变量.<br><code>int[] nums;</code></li>
+<li>创建大小为七的数组, 并将它赋值给之前声明为<code>int[]</code>的变量<code>nums</code>.<br><code>nums = new int[7];</code></li>
+<li>赋予<code>int</code>数组的每一个元素一个<code>int</code>值.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nums[<span class="number">0</span>] = <span class="number">6</span>;</span><br><span class="line">nums[<span class="number">1</span>] = <span class="number">6</span>;</span><br><span class="line">nums[<span class="number">2</span>] = <span class="number">6</span>;</span><br><span class="line">nums[<span class="number">3</span>] = <span class="number">6</span>;</span><br><span class="line">nums[<span class="number">4</span>] = <span class="number">6</span>;</span><br><span class="line">nums[<span class="number">5</span>] = <span class="number">6</span>;</span><br><span class="line">nums[<span class="number">6</span>] = <span class="number">6</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="数组也是对象"><a href="#数组也是对象" class="headerlink" title="数组也是对象"></a>数组也是对象</h4><p>数组能够让人使用位置索引来快速、随机地存取其中的元素.</p>
 
       
     </div>
