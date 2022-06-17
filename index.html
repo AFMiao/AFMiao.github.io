@@ -1,11 +1,11 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   
-  
   <title>小苗的个人博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="小苗的个人博客">
 <meta property="og:url" content="http://example.com/index.html">
@@ -14,30 +14,21 @@
 <meta property="article:author" content="Arnold Miao">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="小苗的个人博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="小苗的个人博客" type="application/atom+xml">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
-
+    <link rel="icon" href="/favicon.png">
   
   
 <link rel="stylesheet" href="/css/style.css">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
 <meta name="generator" content="Hexo 6.2.0"></head>
-
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
+<div id="container">
+  <div id="wrap">
+    <header id="header">
   <div id="banner"></div>
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
@@ -62,19 +53,25 @@
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="example.com">
+        </form>
       </div>
     </div>
   </div>
 </header>
-
-      <div class="outer">
-        <section id="main">
+    <div class="outer">
+      <section id="main">
   
-    <article id="post-java" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-java" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2022/06/12/java/" class="article-date">
-  <time class="dt-published" datetime="2022-06-12T13:12:09.000Z" itemprop="datePublished">2022-06-12</time>
+  <time datetime="2022-06-12T13:12:09.000Z" itemprop="datePublished">2022-06-12</time>
 </a>
     
   </div>
@@ -85,13 +82,13 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/06/12/java/">Java学习笔记</a>
+      <a class="article-title" href="/2022/06/12/java/">Java学习笔记</a>
     </h1>
   
 
       </header>
     
-    <div class="e-content article-entry" itemprop="articleBody">
+    <div class="article-entry" itemprop="articleBody">
       
         <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="Java的工作方式"><a href="#Java的工作方式" class="headerlink" title="Java的工作方式"></a>Java的工作方式</h3><p>Java的目标是写出一个能在任何设备上运行的应用程序.</p>
 <h4 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h4><p>编写源代码文件.</p>
@@ -459,14 +456,115 @@
 <h4 id="通过寻找使用共同行为的子类来找出更多抽象化的机会"><a href="#通过寻找使用共同行为的子类来找出更多抽象化的机会" class="headerlink" title="通过寻找使用共同行为的子类来找出更多抽象化的机会"></a>通过寻找使用共同行为的子类来找出更多抽象化的机会</h4><p>我们观察到<code>Wolf</code>和<code>Dog</code>间、<code>Lion</code>、<code>Tiger</code>和<code>Cat</code>间有某些共同的行为.</p>
 <h4 id="完成类的继承层次"><a href="#完成类的继承层次" class="headerlink" title="完成类的继承层次"></a>完成类的继承层次</h4><p>我们使用全科和猫科动物的分类来做出<code>Canine</code>和<code>Feline</code>两个类. 每个类中都有各自的<code>roam()</code>方法.</p>
 <h4 id="调用哪个方法"><a href="#调用哪个方法" class="headerlink" title="调用哪个方法?"></a>调用哪个方法?</h4><p>当调用对象引用的方法时, 我们会调用到与该对象类型最接近的方法.</p>
-<h4 id="子类能够继承哪些东西"><a href="#子类能够继承哪些东西" class="headerlink" title="子类能够继承哪些东西?"></a>子类能够继承哪些东西?</h4><p>子类可以继承父类的成员, 但父类可以通过<strong>存取权限</strong>决定子类是否能够继承某些特定的成员.</p>
+<h4 id="子类能够继承哪些东西"><a href="#子类能够继承哪些东西" class="headerlink" title="子类能够继承哪些东西?"></a>子类能够继承哪些东西?</h4><p>子类可以继承父类的成员, 但父类可以通过<strong>存取权限</strong>决定子类是否能够继承某些特定的成员. 此处只介绍如下所示的四种存取权限, 其限制程度从左到右依次降低:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">default</span> <span class="keyword">protected</span> <span class="keyword">public</span></span><br></pre></td></tr></table></figure>
+
+<p><code>private</code>类型的成员不会被继承, 而<code>public</code>类型的成员会被继承.</p>
+<h4 id="使用继承的几个条件"><a href="#使用继承的几个条件" class="headerlink" title="使用继承的几个条件"></a>使用继承的几个条件</h4><ol>
+<li>当某个类比其父类更具有特定意义时使用继承</li>
+<li>在行为程序(实现程序代码)应该被多个相同基本类型类所共享时, 应考虑使用继承</li>
+<li>继承有时候并不是达成重用行为程序的最佳方式</li>
+<li>如果两者间不能通过IS-A测试就不要应用继承关系. 一定要确定子类是父类一种更特定的类型才可以</li>
+</ol>
+<h4 id="继承的意义"><a href="#继承的意义" class="headerlink" title="继承的意义"></a>继承的意义</h4><p>通过设计继承的过程我们可以累计面向对象的经验. 通过提取出一组类间共同的抽象性, 我们能够排除掉重复的程序代码而将这个部分放在父类中.</p>
+<ol>
+<li>避免了重复的程序代码</li>
+<li>定义出共同的协议</li>
+</ol>
+<p>继承可以确保某个父型之下的所有类都有父型所持有的全部方法, 也就是说, <strong>我们会通过继承来定义相关类间的共同协议</strong>.</p>
+<p>当我们定义出一组类的父型时, 我们可以用子型的任何类来填补任何需要或期待父型的位置.</p>
+<h3 id="多态的运行"><a href="#多态的运行" class="headerlink" title="多态的运行"></a>多态的运行</h3><p>若要观察多态是如何运行的, 我们就需要先复习一下一般声明引用和创建对象的方法:</p>
+<ol>
+<li>声明一个引用变量</li>
+<li>创建对象</li>
+<li>连接对象和引用</li>
+</ol>
+<p>重点在于, 引用类型与对象的类型必须相符.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Dog</span> <span class="variable">myDog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br></pre></td></tr></table></figure>
+
+<p>但是在<strong>多态</strong>下, <strong>引用与对象可以是不同的类型</strong>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Animal</span> <span class="variable">myDog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br></pre></td></tr></table></figure>
+
+<p><strong>运用多态时, 引用类型可以是实际对象类型的父类</strong>. 当我们声明一个引用变量时, 任何对该引用变量类型可通过IS-A测试的对象都可以被赋值给该引用. 换句话说, 任何<code>extends</code>过声明引用变量类型的对象都可以被赋值给这个引用变量. 这样我们就可以创建出多态数组一类的东西.</p>
+<p>举个例子:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明Animal类型的数组</span></span><br><span class="line">Animal[] animals = <span class="keyword">new</span> <span class="title class_">Animal</span>[<span class="number">5</span>];</span><br><span class="line"><span class="comment">// 但我们可以放任何Animal类的子类进去</span></span><br><span class="line">animals[<span class="number">0</span>] = <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br><span class="line">animals[<span class="number">1</span>] = <span class="keyword">new</span> <span class="title class_">Cat</span>();</span><br><span class="line">animals[<span class="number">2</span>] = <span class="keyword">new</span> <span class="title class_">Wolf</span>();</span><br><span class="line">animals[<span class="number">3</span>] = <span class="keyword">new</span> <span class="title class_">Hippo</span>();</span><br><span class="line">animals[<span class="number">4</span>] = <span class="keyword">new</span> <span class="title class_">Lion</span>();</span><br><span class="line">        </span><br><span class="line"><span class="comment">// 我们可以将数组的元素调出来当作Animal对象来操作</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; animals.length; i++) &#123;</span><br><span class="line">    animals[i].eat();</span><br><span class="line">    animals[i].roam();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数和返回类型也可以多态</strong>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Vet</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">giveShot</span><span class="params">(Animal a)</span> &#123;</span><br><span class="line">        a.makeNoise();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PetOwner</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">start</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Vet</span> <span class="variable">v</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Vet</span>();</span><br><span class="line">        <span class="type">Dog</span> <span class="variable">d</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br><span class="line">        <span class="type">Hippo</span> <span class="variable">h</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Hippo</span>();</span><br><span class="line">        v.giveShot(d);  <span class="comment">// 执行Dog的makeNoise()</span></span><br><span class="line">        v.giveShot(h);  <span class="comment">// 执行Hippo的makeNoise()</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过将程序代码编写成使用多态参数的程序, 即将参数声明成父类类型, 我们就可以在运行时传入任何的子类对象; 此外, 在引进新子类后, 我们也不必修改以前的程序.</p>
+<p>如果你想<strong>放置某个类被做出子类</strong>, 有三种方法可供选择:</p>
+<ol>
+<li>进行存取控制</li>
+<li>使用<code>final</code>修饰符——它表示这里是继承树的末端, 不能被继承</li>
+<li>让类只拥有<code>private</code>的构造程序(constructor)</li>
+</ol>
+<h3 id="覆盖的规则"><a href="#覆盖的规则" class="headerlink" title="覆盖的规则"></a>覆盖的规则</h3><p>如果想要在子类中覆盖掉父类中的某些方法, 我们需要先遵守以下规则:</p>
+<ol>
+<li>参数必须相同, 且返回类型必须要兼容</li>
+<li>不能降低方法的存取权限</li>
+</ol>
+<h3 id="方法的重载-Overload"><a href="#方法的重载-Overload" class="headerlink" title="方法的重载(Overload)"></a>方法的重载(Overload)</h3><p>重载的意义是<strong>两个方法的名称相同, 但参数不同</strong>. 这也是其与多态的区别所在.</p>
+<p>重载可以有同一方法的多个不同参数版本以方便调用. 它有着下列特点:</p>
+<ol>
+<li>返回类型可以不同</li>
+<li>不能只改变返回类型</li>
+<li>可以更改存取权限</li>
+</ol>
+<p>下面是一个合法的重载范例:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Overloads</span> &#123;</span><br><span class="line">    String uniqueID;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">addNum</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">addNum</span><span class="params">(<span class="type">double</span> a, <span class="type">double</span> b)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUniqueID</span><span class="params">(String theID)</span> &#123;</span><br><span class="line">        uniqueID = theID;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUniqueID</span><span class="params">(<span class="type">int</span> ssNumber)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">numString</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span> + ssNumber;</span><br><span class="line">        setUniqueID(numString);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h2><p><strong>继承只是个开始</strong>. 要使用多态, 我们还需要接口. 我们需要超越简单的继承并前进到只有通过设计与编写接口规格才能达成的适应性与扩展性. 到底<strong>接口</strong>是什么呢? 它是一种<strong>100%纯抽象的类</strong>. 什么是<strong>抽象类</strong>? 它是<strong>无法初始化的类</strong>.</p>
+<h3 id="有些类不该初始化"><a href="#有些类不该初始化" class="headerlink" title="有些类不该初始化"></a>有些类不该初始化</h3><p>在前面的章节中, 我们为了介绍继承的概念写了一个仿真动物行为的例子. 在这个例子中, 我们通过继承<code>Animal</code>类建立了具体的动物类, 并以此创建了各动物类的对象. 但是, 如果我们要创建<code>Animal</code>类的对象, 会发生什么呢?</p>
+<p>答案是不会发生什么. 但是, 这个世界上毕竟没有叫做”动物”的动物, 我们硬要把它当作对象创建出来也毫无意义; 但是我们又需要<code>Animal</code>类来继承和产生多态. 但是要限制只有它的子类才能被初始化.</p>
+<p>在Java中, 通过标记类为抽象类, 编译器就知道这个类不能被初始化, 即被<code>new</code>出来. 具体实施方法就是在类的声明前面加上抽象类关键词<code>abstract</code>即可.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Canine</span> <span class="keyword">extends</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">roam</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当设计好继承结构后, 我们必须要决定哪些类是抽象的, 哪些又是具体的. 抽象类除了被继承之外, 是没有用途、没有值且没有目的的.</p>
+<h3 id="抽象的方法"><a href="#抽象的方法" class="headerlink" title="抽象的方法"></a>抽象的方法</h3><p>除了类之外, 我们也可以将方法标记为<code>abstract</code>的. 抽象的类代表此类必须要被<code>extend</code>过, <strong>抽象的方法代表此方法一定要被覆盖过</strong>.</p>
+<p><strong>抽象的方法没有实体</strong>, 所以抽象方法的代码是这样的:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">eat</span><span class="params">()</span>; <span class="comment">// 没有方法体, 直接以分号结束</span></span><br></pre></td></tr></table></figure>
+
+<p>如果我们声明了一个抽象的方法, 我们就必须<strong>将包含这个方法的类表姐为抽象的</strong>.</p>
+<p>此外, <strong>我们必须实现所有抽象的方法</strong>.</p>
+<h3 id="多态的使用"><a href="#多态的使用" class="headerlink" title="多态的使用"></a>多态的使用</h3><p>假设我们不知道有<code>ArrayList</code>这种类而想要自行编写维护<code>list</code>的类以保存<code>Dog</code>对象. 在第一轮我们指挥写出<code>add()</code>方法. 我们使用大小为五的简单<code>Dog</code>数组<code>Dog[]</code>来保存新加入的<code>Dog</code>对象. 当<code>Dog</code>对象超过五个时, 我们还是可以调用<code>add()</code>方法, 但是什么都不会发生. 如果没有越界, <code>add()</code>会把<code>Dog</code>装到可用的数组位置中, 然后递增可用索引<code>nextIndex</code>.</p>
+<h4 id="自创Dog专用的list"><a href="#自创Dog专用的list" class="headerlink" title="自创Dog专用的list"></a>自创<code>Dog</code>专用的<code>list</code></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyDogList</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Dog[] dogs = <span class="keyword">new</span> <span class="title class_">Dog</span>[<span class="number">5</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">nextIndex</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(Dog d)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (nextIndex &lt; dogs.length) &#123;</span><br><span class="line">            dogs[nextIndex] = d;</span><br><span class="line">            System.out.println(<span class="string">&quot;Dog added at &quot;</span> + nextIndex);</span><br><span class="line">            nextIndex++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="还要给Cat用"><a href="#还要给Cat用" class="headerlink" title="还要给Cat用?"></a>还要给<code>Cat</code>用?</h4><p>如果我们发现现在还要写一个给<code>Cat</code>用的<code>list</code>, 我们是另外单独创建一个<code>MyCatList</code>类; 还是创建一个单独的<code>DogAndCat</code>类, 用<code>addCat(Cat c)</code>与<code>addDog(Dog d)</code>来同时处理两个不同的数组实例呢?</p>
+<p>都不是. 我们编写一个不同的<code>AnimalList</code>类让它处理<code>Animal</code>所有的子类.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyAnimalList</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Animal[] animals = <span class="keyword">new</span> <span class="title class_">Animal</span>[<span class="number">5</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">nextIndex</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(Animal a)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (nextIndex &lt; animals.length) &#123;</span><br><span class="line">            animals[nextIndex] = a;</span><br><span class="line">            System.out.println(<span class="string">&quot;Animal added at &quot;</span> + nextIndex);</span><br><span class="line">            nextIndex++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="如果要为所有类写一个list呢"><a href="#如果要为所有类写一个list呢" class="headerlink" title="如果要为所有类写一个list呢?"></a>如果要为所有类写一个<code>list</code>呢?</h4><p>如果要为所有类写一个这样的<code>list</code>, 我们就需要为所有的类找到一个父类. 但是, 真的有这样的类吗?</p>
+<p>实际上是有的, 这个类就是<code>Object</code>类.</p>
+<h3 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a><code>Object</code>类</h3><p>在Java中, 所有的类都是从<code>Object</code>这个类中继承下来的. <code>Object</code>类是所有类的源头, 是所有类的父亲.</p>
+<h4 id="终极对象中都有什么"><a href="#终极对象中都有什么" class="headerlink" title="终极对象中都有什么?"></a>终极对象中都有什么?</h4><ol>
+<li><code>equals(Object o)</code>: 检测两个对象是否是”相等”的</li>
+<li><code>getClass()</code>: 告诉使用者对象是从哪里被初始化的</li>
+<li><code>hashCode()</code>: 返回对象的哈希值</li>
+<li><code>toString()</code>: 列出类的名称和一个我们并不关系的数字</li>
+</ol>
+<h4 id="那么-代价是什么呢"><a href="#那么-代价是什么呢" class="headerlink" title="那么, 代价是什么呢?"></a>那么, 代价是什么呢?</h4><p>在开始以<code>Object</code>类型使用所有适用性参数和返回类型之前, 我们应该考虑到使用<code>Object</code>类型作为引用的一些问题. 此处并不涉及制作出<code>Object</code>类型的实例, 这是在说以<code>Object</code>类型作为引用的其他类型.</p>
+<p>当我们将对象装进<code>ArrayList&lt;Dog&gt;</code>中时, 它会被当作<code>Dog</code>来输入与输出; 但若你把它声明成<code>ArrayList&lt;Object&gt;</code>时会怎样? 如果我们创造出一个可以保存任何一种对象的<code>ArrayList</code>, 并尝试将<code>Dog</code>对象取出并赋值给<code>Dog</code>的引用时会发生什么事?</p>
+<p>答案是<strong>无法通过编译</strong>. <strong>任何从<code>ArrayList&lt;Object&gt;</code>取出的东西都会被当作<code>Object</code>类型的引用而不管它原来是什么</strong>.</p>
+<p>如果想要将被编译器看作是<code>Object</code>类的<code>Dog</code>对象转回来, 我们可以从<code>Object</code>中拷贝出一个<code>Dog</code>引用, 并将其赋值给<code>Dog</code>引用变量.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Object</span> <span class="variable">o</span> <span class="operator">=</span> al.get(index);</span><br><span class="line"><span class="type">Dog</span> <span class="variable">d</span> <span class="operator">=</span> (Dog) <span class="number">0</span>;</span><br><span class="line">d.roam();</span><br></pre></td></tr></table></figure>
+
+<p>如果你不能确定他是<code>Dog</code>, 我们可以用<code>instanceof</code>这个运算符来检查. 如果类型抓换错了, 程序会弹出ClassCastException异常并终止程序.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (o <span class="keyword">instanceof</span> Dog) &#123;</span><br><span class="line">    <span class="type">Dog</span> <span class="variable">d</span> <span class="operator">=</span> (Dog) <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由此, Java中引用变量的类型的重要性可见一斑. 我们只能在引用变量的类确实有该方法时才能够调用它.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/06/12/java/" data-id="cl4f1clnl0001s8v56gfx1zes" data-title="Java学习笔记" class="article-share-link">Share</a>
       
+        <a data-url="http://example.com/2022/06/12/java/" data-id="cl4gudvku00035wv5fu8gcund" class="article-share-link">Share</a>
       
+
+      
+        <a href="http://example.com/2022/06/12/java/#ds-thread" class="article-comment-link">Comments</a>
+      
+
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
 
@@ -476,12 +574,11 @@
 </article>
 
 
-
   
-    <article id="post-CSS学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-CSS学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2022/06/09/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time class="dt-published" datetime="2022-06-09T14:16:43.000Z" itemprop="datePublished">2022-06-09</time>
+  <time datetime="2022-06-09T14:16:43.000Z" itemprop="datePublished">2022-06-09</time>
 </a>
     
   </div>
@@ -492,13 +589,13 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/06/09/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">CSS学习笔记</a>
+      <a class="article-title" href="/2022/06/09/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">CSS学习笔记</a>
     </h1>
   
 
       </header>
     
-    <div class="e-content article-entry" itemprop="articleBody">
+    <div class="article-entry" itemprop="articleBody">
       
         <h2 id="CSS语法"><a href="#CSS语法" class="headerlink" title="CSS语法"></a>CSS语法</h2><h3 id="CSS实例"><a href="#CSS实例" class="headerlink" title="CSS实例"></a>CSS实例</h3><p>CSS规则由两个主要的部分构成: 选择器, 以及一条或多条声明. 其中, 选择器通常是需要改变样式的HTML元素, 而声明则是一个属性和一个值. 属性是希望设置的样式属性. 每一个属性都有一个值. 属性和值被冒号分开.<br><code>h1 &#123;color:blue; font-size:12px;&#125;</code></p>
 <p>CSS声明总是以分号’;’结束, 声明总是以大括号’{}’括起来.</p>
@@ -520,9 +617,14 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/06/09/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cl4f1clnd0000s8v588dy7bnn" data-title="CSS学习笔记" class="article-share-link">Share</a>
       
+        <a data-url="http://example.com/2022/06/09/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cl4gudvkk00005wv59gs0387b" class="article-share-link">Share</a>
       
+
+      
+        <a href="http://example.com/2022/06/09/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#ds-thread" class="article-comment-link">Comments</a>
+      
+
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
 
@@ -532,25 +634,21 @@
 </article>
 
 
-
   
-
 
 </section>
-        
-          <aside id="sidebar">
+      
+      <aside id="sidebar">
   
     
-
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
-
 
   
     
@@ -566,10 +664,9 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
-
 
   
     
@@ -591,47 +688,116 @@
   </div>
 
   
-</aside>
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
         
-      </div>
-      <footer id="footer">
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      
       &copy; 2022 Arnold Miao<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
     </div>
   </div>
 </footer>
-
-    </div>
-    <nav id="mobile-nav">
+  </div>
+  <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
-    
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
 
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
 
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+        });
+</script>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 
 <script src="/js/script.js"></script>
 
 
-
-
-
-  </div>
+</div>
 </body>
 </html>
