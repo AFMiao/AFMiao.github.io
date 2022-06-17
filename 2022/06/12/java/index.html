@@ -14,7 +14,7 @@
 <meta property="og:description" content="基本概念Java的工作方式Java的目标是写出一个能在任何设备上运行的应用程序. 源代码编写源代码文件. 编译器用编译器运行源代码. 编译器会检查错误, 如果有就要改正, 以获得正确的输出. 输出编译器会产出字节码. 任何支持Java的装置都能够把它转译为可执行的内容. 编译后的字节码与平台无关. Java虚拟机(JVM)通过Java虚拟机可以读取和执行字节码. 要做的事编写源代码文件, 用jav">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-06-12T13:12:09.000Z">
-<meta property="article:modified_time" content="2022-06-17T06:18:05.055Z">
+<meta property="article:modified_time" content="2022-06-17T08:32:50.628Z">
 <meta property="article:author" content="Arnold Miao">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -184,16 +184,16 @@
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GuessGame</span> &#123;</span><br><span class="line">    Player p1;</span><br><span class="line">    Player p2;</span><br><span class="line">    Player p3;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">startGame</span><span class="params">()</span> &#123;</span><br><span class="line">        p1 = <span class="keyword">new</span> <span class="title class_">Player</span>();</span><br><span class="line">        p2 = <span class="keyword">new</span> <span class="title class_">Player</span>();</span><br><span class="line">        p3 = <span class="keyword">new</span> <span class="title class_">Player</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">guessp1</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">guessp2</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">guessp3</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">p1isRight</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">p2isRight</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">p3isRight</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">targetNumber</span> <span class="operator">=</span> (<span class="type">int</span>) (Math.random() * <span class="number">10</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;I&#x27;m thinking of a number between 0 and 9 ...&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Number to guess is &quot;</span> + targetNumber);</span><br><span class="line"></span><br><span class="line">            p1.guess();</span><br><span class="line">            p2.guess();</span><br><span class="line">            p3.guess();</span><br><span class="line"></span><br><span class="line">            guessp1 = p1.number;</span><br><span class="line">            System.out.println(<span class="string">&quot;Player one guessed &quot;</span> + guessp1);</span><br><span class="line"></span><br><span class="line">            guessp2 = p2.number;</span><br><span class="line">            System.out.println(<span class="string">&quot;Player two guessed &quot;</span> + guessp1);</span><br><span class="line"></span><br><span class="line">            guessp3 = p3.number;</span><br><span class="line">            System.out.println(<span class="string">&quot;Player three guessed &quot;</span> + guessp1);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (guessp1 == targetNumber) &#123;</span><br><span class="line">                p1isRight = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (guessp2 == targetNumber) &#123;</span><br><span class="line">                p2isRight = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (guessp3 == targetNumber) &#123;</span><br><span class="line">                p3isRight = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (p1isRight || p2isRight || p3isRight) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;We have a winner!&quot;</span>);</span><br><span class="line">                System.out.println(<span class="string">&quot;Player One got it right? &quot;</span> + p1isRight);</span><br><span class="line">                System.out.println(<span class="string">&quot;Player Two got it right? &quot;</span> + p2isRight);</span><br><span class="line">                System.out.println(<span class="string">&quot;Player Three got it right? &quot;</span> + p3isRight);</span><br><span class="line">                System.out.println(<span class="string">&quot;Game is over.&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;Players will have to try again.&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="认识变量"><a href="#认识变量" class="headerlink" title="认识变量"></a>认识变量</h2><p>变量有两种: <strong><code>primitive</code>主数据类型</strong>和<strong>引用</strong>.</p>
-<h3 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h3><p>为了让类型安全能够发挥作用, 我们必须声明所有变量的类型, 制定他是一个<code>int</code>类型或是一个<code>Dog</code>类型. 变量有两种: <code>primitive</code>主数据类型与对象引用. 其中, <code>primitive</code>主数据类型用来保存基本类型的值, 包括整数、布尔类型和浮点数等; 而对象引用保存的是对象的引用.</p>
-<h3 id="primitive主数据类型"><a href="#primitive主数据类型" class="headerlink" title="primitive主数据类型"></a><code>primitive</code>主数据类型</h3><p><code>primitive</code>主数据类型有着不同的大小与名称, 如四种大小不同的整数类型<code>long</code>, <code>int</code>, <code>short</code>和<code>byte</code>.</p>
+<h2 id="认识变量"><a href="#认识变量" class="headerlink" title="认识变量"></a>认识变量</h2><p>变量有两种: <strong>primitive主数据类型</strong>和<strong>引用</strong>.</p>
+<h3 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h3><p>为了让类型安全能够发挥作用, 我们必须声明所有变量的类型, 制定他是一个<code>int</code>类型或是一个<code>Dog</code>类型. 变量有两种: primitive主数据类型与对象引用. 其中, primitive主数据类型用来保存基本类型的值, 包括整数、布尔类型和浮点数等; 而对象引用保存的是对象的引用.</p>
+<h3 id="primitive主数据类型"><a href="#primitive主数据类型" class="headerlink" title="primitive主数据类型"></a>primitive主数据类型</h3><p>primitive主数据类型有着不同的大小与名称, 如四种大小不同的整数类型<code>long</code>, <code>int</code>, <code>short</code>和<code>byte</code>.</p>
 <h3 id="避开关键字"><a href="#避开关键字" class="headerlink" title="避开关键字"></a>避开关键字</h3><p>Java中的变量命名规则如下:</p>
 <ol>
 <li>名称必须以字母、下划线或$符号开头, 不能用数字开头</li>
 <li>除了第一个字符, 变量名称的其他位置上都可以用数字</li>
 <li>避开Java保留字</li>
 </ol>
-<h3 id="变量与对象"><a href="#变量与对象" class="headerlink" title="变量与对象"></a>变量与对象</h3><p>我们已经指导如何声明<code>primitive</code>主数据类型变量. 但是非primitive主数据类型的变量又该如何处理呢? 有以下要点:</p>
+<h3 id="变量与对象"><a href="#变量与对象" class="headerlink" title="变量与对象"></a>变量与对象</h3><p>我们已经指导如何声明primitive主数据类型变量. 但是非primitive主数据类型的变量又该如何处理呢? 有以下要点:</p>
 <ol>
 <li>事实上没有”对象变量”这样的东西存在</li>
 <li>只有**引用(reference)**到对象的变量</li>
@@ -332,7 +332,7 @@
 
 <h4 id="局部变量在使用前必须初始化"><a href="#局部变量在使用前必须初始化" class="headerlink" title="局部变量在使用前必须初始化"></a>局部变量在使用前必须初始化</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">go</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> x;  <span class="comment">// 无法编译</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">z</span> <span class="operator">=</span> x + <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="变量的比较-primitive主数据类型或引用"><a href="#变量的比较-primitive主数据类型或引用" class="headerlink" title="变量的比较(primitive主数据类型或引用)"></a>变量的比较(<code>primitive</code>主数据类型或引用)</h3><p>如果我们想要知道两个<code>primitive</code>主数据类型是否相等, 只需要使用<code>==</code>运算符即可; 如果我们想要知道两个引用变量是否引用到堆上的同一个对象, 也是使用同样的方法即可. 但如果想要知道两个对象是否真的相等, 则需要使用<code>equals()</code>这个方法, 且相等的意义也需要视对象的类型而定.</p>
+<h3 id="变量的比较-primitive主数据类型或引用"><a href="#变量的比较-primitive主数据类型或引用" class="headerlink" title="变量的比较(primitive主数据类型或引用)"></a>变量的比较(primitive主数据类型或引用)</h3><p>如果我们想要知道两个primitive主数据类型是否相等, 只需要使用<code>==</code>运算符即可; 如果我们想要知道两个引用变量是否引用到堆上的同一个对象, 也是使用同样的方法即可. 但如果想要知道两个对象是否真的相等, 则需要使用<code>equals()</code>这个方法, 且相等的意义也需要视对象的类型而定.</p>
 <h2 id="编写程序——以战舰游戏为例"><a href="#编写程序——以战舰游戏为例" class="headerlink" title="编写程序——以战舰游戏为例"></a>编写程序——以战舰游戏为例</h2><p>我们可以通过设计一个战舰游戏来讲解如何编写一个”真正的”Java程序.</p>
 <p><strong>游戏目标</strong>: 以最少的猜测次数打掉计算机所安排的达康公司(Dot Com)网站. 计算机会根据你的表现来评分.</p>
 <p><strong>初始设置</strong>: 程序启动后, 计算机会在虚拟的$7 \times 7$方格上安排三个达康网站. 安排完成后, 游戏会要求你开始猜坐标.</p>
@@ -579,7 +579,7 @@
 
 <h2 id="构造器与垃圾收集器"><a href="#构造器与垃圾收集器" class="headerlink" title="构造器与垃圾收集器"></a>构造器与垃圾收集器</h2><h3 id="栈与堆"><a href="#栈与堆" class="headerlink" title="栈与堆"></a>栈与堆</h3><p>在Java中, 内存被分为两种区域: 对象的生存空间<strong>堆</strong>(heap)以及方法调和变量的生存空间<strong>栈</strong>(stack). 注意: 并不是所有变量都生活在栈中. 变量分为实例变量和局部变量. 实例变量是被声明在类而不是方法中的变量, 它们被存储于所述的对象中; 局部变量, 又称栈变量, 被声明在方法中. 只有局部变量(栈变量)被储存在栈中, 其余变量均被储存在堆中.</p>
 <h4 id="栈上的方法"><a href="#栈上的方法" class="headerlink" title="栈上的方法"></a>栈上的方法</h4><p>当我们调用一个方法时, 该方法会被放在调用栈的栈顶. 实际被堆上栈的是堆栈块, 它带有方法的状态.</p>
-<h4 id="栈上的对象引用"><a href="#栈上的对象引用" class="headerlink" title="栈上的对象引用"></a>栈上的对象引用</h4><p>非<code>primitive</code>变量保存的只是对象的引用, 而不是对象本身. 故只有保存引用的变量自己被放在了栈上; 对象自己是在堆中待着的.</p>
+<h4 id="栈上的对象引用"><a href="#栈上的对象引用" class="headerlink" title="栈上的对象引用"></a>栈上的对象引用</h4><p>非primitive变量保存的只是对象的引用, 而不是对象本身. 故只有保存引用的变量自己被放在了栈上; 对象自己是在堆中待着的.</p>
 <h4 id="堆上的实例变量"><a href="#堆上的实例变量" class="headerlink" title="堆上的实例变量"></a>堆上的实例变量</h4><p>在我们想要新建一个对象时, Java必须为这个对象在堆上找一个位置. 对象中的实例变量会被存放在其中.</p>
 <p>但是, 如果实例变量自己也是个对象呢? 如果对象带有一个其他类的对象呢? 如果对象带有其他对象的引用变量呢?</p>
 <p>实际上, Java只会为引用变量留出空间. 至于”另一个对象”, 则需要考虑它是什么时候被创建的: 如果声明了对象却没有被赋值, 则只会留下变量的空间:</p>
@@ -666,6 +666,105 @@
 <li>“life”: 只要变量的堆栈还存在于堆栈上, 局部变量就算或者, 即活到方法执行完毕为止;</li>
 <li>“scope’: 局部变量的范围只限于声明它的方法之内. 当此方法调用别的方法时, 该变量还活着, 但不在目前的范围内. 执行其他方法完毕返回时, 范围也就跟着回来.</li>
 </ol>
+<h4 id="引用变量的死亡"><a href="#引用变量的死亡" class="headerlink" title="引用变量的死亡"></a>引用变量的死亡</h4><p>引用变量的死活判断与primitive主数据类型变量相同. 真正的问题在于: <strong>变量的生命周期如何影响对象的生命周期</strong>?</p>
+<p>只要有或者的引用, 对象也就会活着. 如果某个对象的引用已经不在它的范围中, 但该引用还是活着的, 则此对象就会继续活在堆上.</p>
+<p>如果对象的唯一引用死了, 对象就会从堆中被踢开. 引用变量会跟随堆栈块一道解散, 被踢开的对象也就此出局, 成为了”可被垃圾回收器回收的”. 有三种方法能够将对象变为可被回收的:</p>
+<ol>
+<li>对象的引用变量所在的方法被弹出堆栈;</li>
+<li>对象的引用变量被复制到其他的对象上;</li>
+<li>对象的引用变量被赋了<code>null</code>.</li>
+</ol>
+<h2 id="数字与静态"><a href="#数字与静态" class="headerlink" title="数字与静态"></a>数字与静态</h2><h3 id="Math方法"><a href="#Math方法" class="headerlink" title="Math方法"></a><code>Math</code>方法</h3><p>想要执行<code>Math</code>中的方法并不需要创建<code>Math</code>的实例变量. 实际上我们也创建不出来, 因为它们的都是”静态”的. 我们用到的只有这个类本身.</p>
+<h3 id="静态方法与非静态方法"><a href="#静态方法与非静态方法" class="headerlink" title="静态方法与非静态方法"></a>静态方法与非静态方法</h3><p>Java是面向对象的. 但如果有需求(通常是实用方法), 则不需要类的实例. 关键词<code>static</code>可以标记出不需要实例的方法. 一个静态的方法意味着”一种不依靠实例变量也就不需要对象的行为”.</p>
+<h4 id="带有静态方法的含义"><a href="#带有静态方法的含义" class="headerlink" title="带有静态方法的含义"></a>带有静态方法的含义</h4><p>带有静态方法的类一般都不打算被初始化. 这样的类的构造函数一般都被限制为<code>private</code>. 但这并不意味着有一个或多个静态方法的类就不可以被初始化, 毕竟只要有<code>main()</code>的类都算作是有静态方法的类.</p>
+<p>由此可知, 我们可以自由地在类中组合静态与非静态方法. 然而任何非静态方法都需要某种实例来操作. 取得新对象的方法也只有通过<code>new</code>或者序列化(deserialization)以及我们暂时设计不到的Java Reflection API. 除此之外, 别无他发. 实际上, 由谁来新建是一个很有意思的问题. 我们会在下面讨论它.</p>
+<h4 id="静态方法不能调用非静态变量"><a href="#静态方法不能调用非静态变量" class="headerlink" title="静态方法不能调用非静态变量"></a>静态方法不能调用非静态变量</h4><p>静态的方法实在无关特定类的实例情况下执行的. 因为静态的方法是通过类的名称来调用, 所以静态的方法无法引用到该类的任何实力变量. 在此情况下, 静态的方法也不会知道可以使用哪个实例变量值.</p>
+<h4 id="静态方法也不能调用非静态方法"><a href="#静态方法也不能调用非静态方法" class="headerlink" title="静态方法也不能调用非静态方法"></a>静态方法也不能调用非静态方法</h4><p>与非静态变量的情况类似, 静态方法也不能调用非静态方法: 实例不存在, 对应的方法也就不存在.</p>
+<h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><p>假设我们要在执行过程中计算有多少<code>Duck</code>的实例已经被建立出来, 应该怎么作? 在构造函数中递增某个实例变量的值?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Duck</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">duckCount</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Duck</span><span class="params">()</span> &#123;</span><br><span class="line">        duckCount++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码不行, 因为<code>duckCount</code>是个实例变量, 对象与对象间相互不影响, 所以行不通.</p>
+<p>但是, 我们可以将<code>duckCount</code>声明为<code>static</code>变量:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Duck</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> size;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">duckCount</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Duck</span><span class="params">()</span> &#123;</span><br><span class="line">        duckCount++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSize</span><span class="params">(<span class="type">int</span> s)</span> &#123;</span><br><span class="line">        size = s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getSize</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样, 所有的<code>duckCount</code>值就都是相等的. 每当我们创建一个<code>duckCount</code>对象时, <code>duckCount</code>就加1, 由此实现数量的统计.</p>
+<h4 id="静态变量的起始动作"><a href="#静态变量的起始动作" class="headerlink" title="静态变量的起始动作"></a>静态变量的起始动作</h4><p>静态项目的初始化有两项保证:</p>
+<ol>
+<li>静态变量会在该类的任何对象创建之前就完成初始化;</li>
+<li>静态变量会在该类的任何静态方法执行之前就初始化.</li>
+</ol>
+<h4 id="静态final变量是常数"><a href="#静态final变量是常数" class="headerlink" title="静态final变量是常数"></a>静态<code>final</code>变量是常数</h4><p>一个被标记为<code>final</code>的变量代表它一旦被初始化之后就不会被改动. 也就是说, 类加载之后静态<code>final</code>变量就一直会维持原值. 以<code>Math.PI</code>为例:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">double</span> <span class="variable">PI</span> <span class="operator">=</span> <span class="number">3.141592653589793</span>;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>此变量被标记为<code>public</code>, 因此可供各方读取;</li>
+<li>此变量被标记为<code>static</code>, 因此你不需要<code>Math</code>的实例;</li>
+<li>此变量被标记为<code>final</code>, 因为圆周率是不变的.</li>
+</ol>
+<p>没有其他的方法再可以将一个变量标记为不变的, 但是又约定俗成的命名惯例可以帮助我们这些人类认出来, 即<strong>常熟变量的名称应该要都是大写字母</strong>.</p>
+<h4 id="静态final变量的初始化"><a href="#静态final变量的初始化" class="headerlink" title="静态final变量的初始化"></a>静态<code>final</code>变量的初始化</h4><p>有两种方法. 一是在声明的时候:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Foo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">FOO_X</span> <span class="operator">=</span> <span class="number">25</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>二是在静态初始化程序中:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Bar</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">double</span> BAR_SIGH;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        BAR_SIGN = (<span class="type">double</span>) Math.random();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果没有按上述两种方式中的一种为静态<code>final</code>变量初始化的话, 如:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Bar</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">double</span> BAR_SIGN;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译器会报错, 要求你初始化这个变量.</p>
+<h3 id="final的其他用法"><a href="#final的其他用法" class="headerlink" title="final的其他用法"></a><code>final</code>的其他用法</h3><p><code>final</code>不只用在静态变量上. 我们也可以用<code>final</code>关键字来修饰非静态的变量, 其中包括实例变量、局部变量以及方法的参数. 他们都代表被修饰的值不能变动. 我们也可以使用<code>final</code>来防止方法的覆盖或创建子类.</p>
+<p>总结一下:</p>
+<ol>
+<li><code>final</code>的变量代表其值不能被修改;</li>
+<li><code>final</code>的方法代表该方法不能被覆盖;</li>
+<li><code>final</code>的类代表该类不能被继承.</li>
+</ol>
+<h3 id="primitive主数据类型的包装"><a href="#primitive主数据类型的包装" class="headerlink" title="primitive主数据类型的包装"></a>primitive主数据类型的包装</h3><p>我们有时想要把primitive主数据类型当作对象来处理. 如Java 5.0之前, 我们无法直接将primitive主数据类型装入<code>ArrayList</code>或<code>HashMap</code>中. 但是, 每个primitive主数据类型都有一个包装用的类, 且这些包装类都放在<code>Java.lang</code>这个包中, 无需import. 这些包装类与其对应的primitive主数据类型如下表所示:</p>
+<table>
+<thead>
+<tr>
+<th>primitive主数据类型名称</th>
+<th>包装类名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>boolean</code></td>
+<td><code>Boolean</code></td>
+</tr>
+<tr>
+<td><code>char</code></td>
+<td><code>Character</code></td>
+</tr>
+<tr>
+<td><code>byte</code></td>
+<td><code>Byte</code></td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td><code>Short</code></td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>Integer</code></td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td><code>Long</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><code>Float</code></td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td><code>Double</code></td>
+</tr>
+</tbody></table>
+<p>包装过程如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">200</span>;</span><br><span class="line"><span class="type">Integer</span> <span class="variable">iWrap</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(i);</span><br></pre></td></tr></table></figure>
+
+<p>解包装过程如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">unWrapped</span> <span class="operator">=</span> iWrap.intValue();</span><br></pre></td></tr></table></figure>
 
       
     </div>
