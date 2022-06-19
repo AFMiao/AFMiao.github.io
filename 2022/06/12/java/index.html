@@ -14,9 +14,9 @@
 <meta property="og:description" content="基本概念Java的工作方式Java的目标是写出一个能在任何设备上运行的应用程序. 源代码编写源代码文件. 编译器用编译器运行源代码. 编译器会检查错误, 如果有就要改正, 以获得正确的输出. 输出编译器会产出字节码. 任何支持Java的装置都能够把它转译为可执行的内容. 编译后的字节码与平台无关. Java虚拟机(JVM)通过Java虚拟机可以读取和执行字节码. 要做的事编写源代码文件, 用jav">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-06-12T13:12:09.000Z">
-<meta property="article:modified_time" content="2022-06-19T04:38:04.476Z">
+<meta property="article:modified_time" content="2022-06-19T06:29:31.430Z">
 <meta property="article:author" content="Arnold Miao">
-<meta property="article:tag" content="java">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="小苗的个人博客" type="application/atom+xml">
@@ -982,12 +982,29 @@
 <p>但是, 不同虚拟机上的调度器有着不同的工作逻辑, 故我们的程序不能依靠调度的特定行为来保持执行的正确性.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MRunnable</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        go();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">go</span><span class="params">()</span> &#123;</span><br><span class="line">        doMore();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doMore</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;top of the stack&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ThreadTestDrive</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Runnable</span> <span class="variable">threadJob</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MRunnable</span>();</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">myThread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(threadJob);</span><br><span class="line"></span><br><span class="line">        myThread.start();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;back in main&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="让线程小睡一下"><a href="#让线程小睡一下" class="headerlink" title="让线程小睡一下"></a>让线程小睡一下</h3>
+<h3 id="让线程小睡一下"><a href="#让线程小睡一下" class="headerlink" title="让线程小睡一下"></a>让线程小睡一下</h3><p>确保线程能够有机会执行的最好方式是让它们周期性地去睡一下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Thread.sleep(<span class="number">2000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>但是在这个方法有可能会抛出<code>InterruptedException</code>异常, 所有对它的调用都必须包含在<code>try/catch</code>块中. 因此, 真正的程序代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (InterruptedException ex) &#123;</span><br><span class="line">    ex.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(实际上, 我们通常不必刻意使用<code>sleep()</code>来保证其他的线程会被执行. 这是一个很复杂的问题, 详见一些专门论述Java多线程的书籍.)</p>
+<h3 id="建立与启动两个线程"><a href="#建立与启动两个线程" class="headerlink" title="建立与启动两个线程"></a>建立与启动两个线程</h3><p>线程可以有名字. 下面的例子中有两个线程. 它们都执行相同的工作: 在循环中列出线程的名字.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RunThreads</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">RunThreads</span> <span class="variable">runner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RunThreads</span>();</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">alpha</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(runner);</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">beta</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(runner);</span><br><span class="line">        alpha.setName(<span class="string">&quot;Alpha Thread&quot;</span>);</span><br><span class="line">        beta.setName(<span class="string">&quot;Beta Thread&quot;</span>);</span><br><span class="line">        alpha.start();</span><br><span class="line">        beta.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">25</span>; i++) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">threadName</span> <span class="operator">=</span> Thread.currentThread().getName();</span><br><span class="line">            System.out.println(threadName + <span class="string">&quot; is running .&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="多线程的并发性问题"><a href="#多线程的并发性问题" class="headerlink" title="多线程的并发性问题"></a>多线程的并发性问题</h3><p>并发性会引发竞争状态, 进而引发数据的损毁. 这一切都来自于一种完全可能的状况, 即两个或以上的线程存取单一对象的数据. 也就是说, 两个不同执行空间上的方法都在堆上对同一个对象执行<code>getter</code>或<code>setter</code>.</p>
+<p>为了解决这个问题, 我们需要设计一把锁, 使得每个方法在同时只能被一个线程调用. 这把锁就是<code>synchronized</code>.</p>
+<p><code>synchronized</code>关键词代表线程需要一把钥匙来存取被同步化(synchronized)过的线程.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">makeWithdrawal</span><span class="params">(<span class="type">int</span> amount)</span> &#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="同步化的死锁问题"><a href="#同步化的死锁问题" class="headerlink" title="同步化的死锁问题"></a>同步化的死锁问题</h4><p>如同步化的定义所述, 它会确保在需要的方法执行完毕前不执行任何其他操作. 问题来了: 如果那个”需要的方法”的执行需要某个被同步化确保不执行的内容怎么办? 这就完蛋了. 程序会永远地等下去. 这就是所谓的死锁.</p>
+<p>Java没有处理死锁的机制, 想要尽可能地避免死锁只能依赖良好的多线程程序设计. 推荐阅读O’Relly出版的<em>Java Thread</em>, 上面对包括死锁在内的许多有关Java多线程的知识进行了清晰的论述.</p>
+<h2 id="集合与泛型"><a href="#集合与泛型" class="headerlink" title="集合与泛型"></a>集合与泛型</h2>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://example.com/2022/06/12/java/" data-id="cl4ktj4y80001okv5b3da7lqr" class="article-share-link">Share</a>
+        <a data-url="http://example.com/2022/06/12/java/" data-id="cl4lcph870003akv579f70wp4" class="article-share-link">Share</a>
       
 
       
@@ -995,13 +1012,22 @@
       
 
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
     </footer>
   </div>
   
     
 <nav id="article-nav">
+  
+    <a href="/2022/06/19/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B71/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java核心技术卷1
+        
+      </div>
+    </a>
   
   
     <a href="/2022/06/09/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
@@ -1028,7 +1054,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1037,7 +1063,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/java/" style="font-size: 10px;">java</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a>
     </div>
   </div>
 
@@ -1046,7 +1072,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -1056,6 +1082,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/06/19/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B71/">Java核心技术卷1</a>
+          </li>
         
           <li>
             <a href="/2022/06/12/java/">Java学习笔记</a>

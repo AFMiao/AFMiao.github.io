@@ -68,6 +68,120 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-Java核心技术卷1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/06/19/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B71/" class="article-date">
+  <time datetime="2022-06-19T06:29:11.000Z" itemprop="datePublished">2022-06-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/19/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B71/">Java核心技术卷1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Java程序设计概述"><a href="#Java程序设计概述" class="headerlink" title="Java程序设计概述"></a>Java程序设计概述</h2><h2 id="Java程序设计环境"><a href="#Java程序设计环境" class="headerlink" title="Java程序设计环境"></a>Java程序设计环境</h2><h2 id="Java的基本程序设计结构"><a href="#Java的基本程序设计结构" class="headerlink" title="Java的基本程序设计结构"></a>Java的基本程序设计结构</h2><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>从概念上讲, Java字符串就是Unicode字符序列. 例如, 串”Java\u2122”由5个Unicode字符J、a、v、a和™组成. Java没有内置的字符串类型, 而是在标准Java类库中提供了一个预定义类, 其很自然地叫做<code>String</code>. 每一个用双引号括起来的字符串都是<code>String</code>类的一个实例.</p>
+<h4 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h4><p><code>String</code>类的<code>substring()</code>方法可以从一个较大的字符串中提取出一个字串. 如:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">greeting</span> <span class="operator">=</span> <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> greeting.substring(<span class="number">0</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>substring()</code>方法的第二个参数表示<strong>不想复制</strong>的第一个位置. 这里, 我们想要复制第0、1和2个字符.</p>
+<p><code>substring()</code>的工作方式有一个优点: 容易计算字符串的长度. 字符串<code>s.substring(a, b)</code>的长度就是$b-a$.</p>
+<h4 id="拼接"><a href="#拼接" class="headerlink" title="拼接"></a>拼接</h4><p>与绝大多数的程序设计语言一样, Java允许使用<code>+</code>号连接(拼接)两个字符串.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">expletive</span> <span class="operator">=</span> <span class="string">&quot;Expletive&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">PG13</span> <span class="operator">=</span> <span class="string">&quot;deleted&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">message</span> <span class="operator">=</span> expletive + PG13;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码讲”Expletivedeleted”赋值给了变量<code>message</code>.</p>
+<p>当讲一个字符串与一个非字符串的值进行拼接时, 后者被转换成了字符串. 例如:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">age</span> <span class="operator">=</span> <span class="number">13</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">rating</span> <span class="operator">=</span> <span class="string">&quot;PG&quot;</span> + age;</span><br></pre></td></tr></table></figure>
+
+<p>此处, <code>rating</code>被赋值为<code>13</code>.</p>
+<p>如果需要把多个字符串放在一起, 并用一个定界符分隔, 则可以使用静态<code>join()</code>方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">all</span> <span class="operator">=</span> String.join(<span class="string">&quot; / &quot;</span>, <span class="string">&quot;S&quot;</span>, <span class="string">&quot;M&quot;</span>, <span class="string">&quot;L&quot;</span>, <span class="string">&quot;XL&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>我们会得到内容为<code>S / M / L / XL</code>的字符串.</p>
+<h4 id="不可变字符串"><a href="#不可变字符串" class="headerlink" title="不可变字符串"></a>不可变字符串</h4><p><code>String</code>类中没有提供可用于<strong>修改</strong>字符串的方法. 如果硬要修改, 可以把不需要修改的部分复制出来, 然后使用拼接的方法建立新的字符串.</p>
+<p>不可变字符串的最大优点就是<strong>实现了字符串的共享</strong>. 字符串变量总是指向内存中的一块区域, 不论怎样复制字符串变量, 其所指向的内容都是相同的.</p>
+<h4 id="检测字符串是否相等"><a href="#检测字符串是否相等" class="headerlink" title="检测字符串是否相等"></a>检测字符串是否相等</h4><p>可以使用<code>equals()</code>方法检测两个字符串是否相等. 对于表达式<code>s.equals(t)</code>: 如果字符串<code>s</code>与字符串<code>t</code>相等, 则返回<code>true</code>; 反之则返回<code>false</code>. 需要注意的是, <code>s</code>和<code>t</code>既可以是字符串变量, 也可以是字符串字面量. 例如, <code>&quot;Hello&quot;.equals(greeting)</code>表达式是合法的.</p>
+<p>想要在不区分大小写的条件下判断表达式是否合法, 我们可以使用<code>equalsIgnoreCase()</code>方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Hello&quot;</span>.equalsIgnoreCase(<span class="string">&quot;hello&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="空串与null串"><a href="#空串与null串" class="headerlink" title="空串与null串"></a>空串与<code>null</code>串</h4><p>空串<code>&quot;&quot;</code>是长度为零的字符串. 可以调用一下代码检查一个字符串是否为空:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (str.length() == <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (str.equals(<span class="string">&quot;&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>而<code>null</code>串是一种特殊的<code>String</code>变量, 它表示没有任何对象与该变量关联. 可用<code>if (str == null)</code>判断一个字符串是否为<code>null</code>.</p>
+<h4 id="码点与代码单元"><a href="#码点与代码单元" class="headerlink" title="码点与代码单元"></a>码点与代码单元</h4><h4 id="String-API"><a href="#String-API" class="headerlink" title="String API"></a><code>String</code> API</h4><h4 id="阅读联机API文档"><a href="#阅读联机API文档" class="headerlink" title="阅读联机API文档"></a>阅读联机API文档</h4><h4 id="构件字符串"><a href="#构件字符串" class="headerlink" title="构件字符串"></a>构件字符串</h4><p>有时需要较短的字符串构建字符串, 例如案件或来自文件中的单词. 采用字符串连接的方式达到此目的效率比较低, 因为每次连接字符串都要创建一个新的<code>String</code>对象, 费时又占空间. 使用<code>StringBuilder</code>类就可以避免这个问题的发生.</p>
+<p>如果需要用许多小段的字符串构件一个字符串, 那么应该按照下列步骤进行. 首先, 构建一个空的字符串构建器:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">StringBuilder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br></pre></td></tr></table></figure>
+
+<p>当每次需要添加一部分时, 就调用<code>append()</code>方法.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">builder.append(ch);</span><br><span class="line">builder.append(str);</span><br></pre></td></tr></table></figure>
+
+<p>在需要构件字符串时就调用<code>toString()</code>方法, 将可以得到一个<code>String</code>对象, 其中包含了构建器中的字符序列.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">completedString</span> <span class="operator">=</span> builder.toString();</span><br></pre></td></tr></table></figure>
+
+<h3 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h3><h4 id="读取输入"><a href="#读取输入" class="headerlink" title="读取输入"></a>读取输入</h4><p>想要通过控制台进行输入, 首先需要构造一个<code>Scanner</code>对象, 并与”标准输入流”<code>System.in</code>关联.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br></pre></td></tr></table></figure>
+
+<p>现在我们就可以使用<code>Scanner</code>类的各种方法实现输入操作了. 如使用<code>nextLine()</code>方法将读取一行的内容做输入:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.print(<span class="string">&quot;What is your name?&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> in.nextLine();</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>nextLine()</code>的原因是输入行中有可能包含空格. 如果想要读取一个单词(以空白符作为分隔符), 就调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">firstName</span> <span class="operator">=</span> in.next();</span><br></pre></td></tr></table></figure>
+
+<p>要是想读取下一个整数, 就调用<code>nextInt()</code>方法; 如果想读取下一个浮点数, 就调用<code>nextDouble()</code>方法.</p>
+<h4 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h4><h4 id="文件输入与输出"><a href="#文件输入与输出" class="headerlink" title="文件输入与输出"></a>文件输入与输出</h4><h3 id="控制流程"><a href="#控制流程" class="headerlink" title="控制流程"></a>控制流程</h3><h3 id="大数值"><a href="#大数值" class="headerlink" title="大数值"></a>大数值</h3><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h4 id="for-each循环"><a href="#for-each循环" class="headerlink" title="for each循环"></a><code>for each</code>循环</h4><p>Java有一种功能很强的循环结构, 可以用来依次处理数组中的每个元素(其他类型的元素几何也可)而不必为指定下标值而分心. 这种增强的<code>for</code>循环结构的格式为:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (variable : collection) statement</span><br></pre></td></tr></table></figure>
+
+<h4 id="数值初始化以及匿名数组"><a href="#数值初始化以及匿名数组" class="headerlink" title="数值初始化以及匿名数组"></a>数值初始化以及匿名数组</h4><p>在Java中, 提供了一种创建数组对象并同时赋予初始值的简化书写形式. 下面是一个例子: </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] smallPrimes = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">13</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>甚至还可以初始化一个匿名的数组:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">int</span>[] &#123;<span class="number">14</span>, <span class="number">23</span>, <span class="number">43</span>, <span class="number">45</span>, <span class="number">21</span>, <span class="number">45</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这种表示法将创建一个新数组并利用括号中提供的值进行初始化, 数值的大小就是初始值的个数. 使用这种语法形式可以在不创建新变量的情况下重新初始化一个数组. 例如:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smallPrimes = <span class="keyword">new</span> <span class="title class_">int</span>[] &#123;<span class="number">13</span>, <span class="number">23</span>, <span class="number">5</span>, <span class="number">23</span>, <span class="number">42</span>, <span class="number">23</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这是下列语句的简写形式: </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] anonymous = &#123;<span class="number">123</span>, <span class="number">123</span>, <span class="number">42</span>, <span class="number">12</span>, <span class="number">54</span>, <span class="number">312</span>&#125;;</span><br><span class="line">smallPrimes = anonymous;</span><br></pre></td></tr></table></figure>
+
+<h4 id="数组拷贝"><a href="#数组拷贝" class="headerlink" title="数组拷贝"></a>数组拷贝</h4><p>在Java中, 允许将一个<strong>数组变量</strong>拷贝给另一个<strong>数组变量</strong>. 此时, <strong>两个变量将引用同一个数组</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] luckyNumbers = smallPrimes;</span><br><span class="line">luckyNumbers[<span class="number">5</span>] = <span class="number">12</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果希望将一个数组的所有值<strong>拷贝</strong>到一个新的数组中去, 就需要使用<code>Array</code>类的<code>copyOf</code>方法:</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://example.com/2022/06/19/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B71/" data-id="cl4lcph830001akv58a3a8f5j" class="article-share-link">Share</a>
+      
+
+      
+        <a href="http://example.com/2022/06/19/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B71/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2022/06/12/java/" class="article-date">
@@ -979,12 +1093,29 @@
 <p>但是, 不同虚拟机上的调度器有着不同的工作逻辑, 故我们的程序不能依靠调度的特定行为来保持执行的正确性.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MRunnable</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        go();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">go</span><span class="params">()</span> &#123;</span><br><span class="line">        doMore();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doMore</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;top of the stack&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ThreadTestDrive</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Runnable</span> <span class="variable">threadJob</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MRunnable</span>();</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">myThread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(threadJob);</span><br><span class="line"></span><br><span class="line">        myThread.start();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;back in main&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="让线程小睡一下"><a href="#让线程小睡一下" class="headerlink" title="让线程小睡一下"></a>让线程小睡一下</h3>
+<h3 id="让线程小睡一下"><a href="#让线程小睡一下" class="headerlink" title="让线程小睡一下"></a>让线程小睡一下</h3><p>确保线程能够有机会执行的最好方式是让它们周期性地去睡一下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Thread.sleep(<span class="number">2000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>但是在这个方法有可能会抛出<code>InterruptedException</code>异常, 所有对它的调用都必须包含在<code>try/catch</code>块中. 因此, 真正的程序代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (InterruptedException ex) &#123;</span><br><span class="line">    ex.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(实际上, 我们通常不必刻意使用<code>sleep()</code>来保证其他的线程会被执行. 这是一个很复杂的问题, 详见一些专门论述Java多线程的书籍.)</p>
+<h3 id="建立与启动两个线程"><a href="#建立与启动两个线程" class="headerlink" title="建立与启动两个线程"></a>建立与启动两个线程</h3><p>线程可以有名字. 下面的例子中有两个线程. 它们都执行相同的工作: 在循环中列出线程的名字.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RunThreads</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">RunThreads</span> <span class="variable">runner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RunThreads</span>();</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">alpha</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(runner);</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">beta</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(runner);</span><br><span class="line">        alpha.setName(<span class="string">&quot;Alpha Thread&quot;</span>);</span><br><span class="line">        beta.setName(<span class="string">&quot;Beta Thread&quot;</span>);</span><br><span class="line">        alpha.start();</span><br><span class="line">        beta.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">25</span>; i++) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">threadName</span> <span class="operator">=</span> Thread.currentThread().getName();</span><br><span class="line">            System.out.println(threadName + <span class="string">&quot; is running .&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="多线程的并发性问题"><a href="#多线程的并发性问题" class="headerlink" title="多线程的并发性问题"></a>多线程的并发性问题</h3><p>并发性会引发竞争状态, 进而引发数据的损毁. 这一切都来自于一种完全可能的状况, 即两个或以上的线程存取单一对象的数据. 也就是说, 两个不同执行空间上的方法都在堆上对同一个对象执行<code>getter</code>或<code>setter</code>.</p>
+<p>为了解决这个问题, 我们需要设计一把锁, 使得每个方法在同时只能被一个线程调用. 这把锁就是<code>synchronized</code>.</p>
+<p><code>synchronized</code>关键词代表线程需要一把钥匙来存取被同步化(synchronized)过的线程.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">makeWithdrawal</span><span class="params">(<span class="type">int</span> amount)</span> &#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="同步化的死锁问题"><a href="#同步化的死锁问题" class="headerlink" title="同步化的死锁问题"></a>同步化的死锁问题</h4><p>如同步化的定义所述, 它会确保在需要的方法执行完毕前不执行任何其他操作. 问题来了: 如果那个”需要的方法”的执行需要某个被同步化确保不执行的内容怎么办? 这就完蛋了. 程序会永远地等下去. 这就是所谓的死锁.</p>
+<p>Java没有处理死锁的机制, 想要尽可能地避免死锁只能依赖良好的多线程程序设计. 推荐阅读O’Relly出版的<em>Java Thread</em>, 上面对包括死锁在内的许多有关Java多线程的知识进行了清晰的论述.</p>
+<h2 id="集合与泛型"><a href="#集合与泛型" class="headerlink" title="集合与泛型"></a>集合与泛型</h2>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://example.com/2022/06/12/java/" data-id="cl4ktj4y80001okv5b3da7lqr" class="article-share-link">Share</a>
+        <a data-url="http://example.com/2022/06/12/java/" data-id="cl4lcph870003akv579f70wp4" class="article-share-link">Share</a>
       
 
       
@@ -992,7 +1123,7 @@
       
 
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
     </footer>
   </div>
@@ -1044,7 +1175,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://example.com/2022/06/09/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cl4ktj4xx0000okv597zehnbo" class="article-share-link">Share</a>
+        <a data-url="http://example.com/2022/06/09/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cl4lcph7x0000akv5952u9xc2" class="article-share-link">Share</a>
       
 
       
@@ -1072,7 +1203,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1081,7 +1212,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/java/" style="font-size: 10px;">java</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a>
     </div>
   </div>
 
@@ -1090,7 +1221,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -1100,6 +1231,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/06/19/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B71/">Java核心技术卷1</a>
+          </li>
         
           <li>
             <a href="/2022/06/12/java/">Java学习笔记</a>
