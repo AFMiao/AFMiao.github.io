@@ -336,6 +336,245 @@
 <p>类中的特定方法也可以被声明为<code>final</code>. 如果这样做, 子类就不能覆盖这个方法(<code>final</code>类中的所有方法自动地称为<code>final</code>方法). 例如:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Employee</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>将方法或类声明为<code>final</code>主要目的是: 确保它们不会在子类中改变语义. 例如, <code>Calendar</code>类中的<code>getTime()</code>和<code>setTime()</code>方法都生命为<code>final</code>. 这表明<code>Calendar</code>类的设计者负责实现<code>Date</code>类与日历状态之间的转换, 而不允许子类处理这些问题. 同样地, <code>String</code>类也是<code>final</code>类. 这意味着任何人都不能定义<code>String</code>类的子类.</p>
+<h4 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h4><p>就像primitive基本类型数据的类型转换一样, 不同类的引用变量之间也可以进行类型转换, 如:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Manager</span> <span class="variable">boss</span> <span class="operator">=</span> (Manager) staff[<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
+
+<p>我们进行类型转换的唯一原因为: <strong>在暂时忽视对象的实际类型之后, 使用对象的全部功能</strong>. 例如, 在<code>managerTest</code>类中, 由于某些项是普通雇员, 所以<code>staff</code>数组必须是<code>Employee</code>对象的数组. 我们需要将数组中引用经理的元素复原成<code>Manager</code>类, 以便能够访问新增加的所有变量.</p>
+<p>在Java中, 每个对象变量都属于一个类型. 将一个值存入变量时, 编译器将检查该操作是否合法. 将一个子类对象赋给一个父类引用变量, 这是合法的; 将一个父类对象赋给一个子类引用变量, 这就是不合法的. 我们需要养成如下的良好习惯: <strong>在进行类型转换之前, 先查看一下是否能够成功地转换</strong>. 这个过程十分简单, 只需要使用<code>instanceof</code>操作符就可以实现. 例如:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (staff[<span class="number">1</span>] <span class="keyword">instanceof</span> Manager) &#123;</span><br><span class="line">    boss = (Manager) staff[<span class="number">1</span>];</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果检查不通过, 编译器就不会进行这个转换. 综上所述:</p>
+<ol>
+<li>只能在继承层次内进行类型转换;</li>
+<li>在将父类转换成子类之前, 应该使用<code>instanceof</code>进行检查.</li>
+</ol>
+<p>需要注意的是, 如果<code>x</code>为<code>null</code>, 在进行<code>instanceof</code>时只会返回<code>false</code>, 并不会产生任何异常.</p>
+<p>实际上, 通过类型转换调整对象的类型并不是一种好的做法, 应将类型转换限制在仅在需要调用子类中特有的的方法时进行. 但是, 在出现这种情况时, 我们首先需要做的就是检查父类设计, 在父类中添加需要的方法, 这才是比较正确的选择.</p>
+<h4 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h4><h4 id="受保护访问"><a href="#受保护访问" class="headerlink" title="受保护访问"></a>受保护访问</h4><p>我们常说, 最好将类中的实例变量标记为<code>private</code>, 而方法标记为<code>public</code>. 任何声明为<code>private</code>的内容对其他类都是不可见的, 就连自己的子类也不能访问父类的私有域.</p>
+<p>然而, 在某些时候, 我们希望父类中的某些方法允许被子类访问, 或者允许子类的方法访问父类中的某个域. 为此, 我们需要将这些方法或域标记为<code>protected</code>. 例如, 如果将超类<code>Employee</code>中的<code>hireDay</code>声明为<code>protected</code>, 而非<code>private</code>, 其子类<code>Manager</code>中的方法就可以直接访问它.</p>
+<p>不过, 就算标记了<code>protected</code>, 子类<code>Manager</code>也只能访问<code>Manager</code>对象中的<code>hireDay()</code>方法, 而不能访问其他<code>Employee</code>对象中的<code>hireDay()</code>, 对于被标记了<code>protected</code>的其他域也有相同的结论.</p>
+<p>在实际应用中应谨慎使用<code>protected</code>属性. 假设需要将设计的类提供给其他程序员使用, 而这个类中设置了一些保护域, 由于其他程序员可以由这个类再派生出新类, 并访问其中的受保护域, 则如果需要对这个类的实现进行修改, 就需要通知所有使用这个类的程序员. 这与OOP的数据封装原则相悖.</p>
+<p>受保护的方法更具有实际意义. 如果需要限制某个方法的使用, 就可以将它声明为<code>protected</code>. 这表明子类(可能很熟悉祖先类)得到信任, 可以正确地使用这个方法, 而其他类则不行. 这种方法的最好例子就是<code>Object</code>类中的<code>clone</code>方法, 我们会在后面的相关章节展开论述.</p>
+<p>归纳一下Java用于控制可见性的四个修饰符:</p>
+<ol>
+<li>仅对本类可见: <code>private</code>;</li>
+<li>对所有类可见: <code>public</code>;</li>
+<li>对包和所有子类可见: <code>protected</code>;</li>
+<li>对本包可见: 默认, 无需修饰符.</li>
+</ol>
+<h3 id="Object-所有类的父类"><a href="#Object-所有类的父类" class="headerlink" title="Object: 所有类的父类"></a><code>Object</code>: 所有类的父类</h3><p><code>Object</code>类是Java类中所有类的始祖, 所有的类都是由它扩展来的. 因此, 了解这个类所提供的所有服务非常重要.</p>
+<h4 id="equals-方法"><a href="#equals-方法" class="headerlink" title="equals()方法"></a><code>equals()</code>方法</h4><p><code>Object</code>类中的<code>equals()</code>方法用于检测一个对象是否等于另外一个对象. 在<code>Object</code>类中, 这个方法将判断两个对象是否具有相同的引用: 如果两个对象具有相同的引用, 则它们一定是相等的.</p>
+<p>然而, 对于绝大多数类来说, 这种判断是没有意义的. 例如: 采用这种方法判断两个<code>PrintStream</code>对象是否相等就是完全没有意义的. 通常需要的是判断两个对象的状态是否相等. 如果两个对象的状态是相等的, 就认为这两个对象是相等的.</p>
+<h4 id="相等测试与继承"><a href="#相等测试与继承" class="headerlink" title="相等测试与继承"></a>相等测试与继承</h4><p>如果隐式和显式的参数不属于同一个类, <code>equals()</code>方法将会如何处理呢? 这是一个很有争议的问题.</p>
+<p>Java语言规范要求<code>equals()</code>方法具有下面的特性:</p>
+<ol>
+<li>自反性: 对于任何非空引用<code>x</code>, <code>x.equals(x)</code>应该返回<code>true</code>;</li>
+<li>对称性: 对于任何<code>x</code>和<code>y</code>, 当且仅当<code>y.equals(x)</code>返回<code>true</code>, <code>x.equals(y)</code>也应该返回<code>true</code>;</li>
+<li>传递性: 对于任何<code>x</code>、<code>y</code>和<code>z</code>, 如果<code>x.equals(y)</code>返回<code>true</code>, <code>y.equals(z)</code>返回<code>true</code>, <code>x.equals(z)</code>也应该返回<code>true</code>;</li>
+<li>一致性: 如果<code>x</code>和<code>y</code>引用的对象没有发生变化, 反复调用<code>x.equals(y)</code>应该返回同样的结果;</li>
+<li>对于任何非空引用<code>x</code>, <code>x.equals(null)</code>应返回<code>false</code>.</li>
+</ol>
+<p>这些规则是比较合理的, 因为其避免了类库实现者在数据结构中定位一个元素时还要考虑调用<code>x.equals(y)</code>, 还是调用<code>y.equals(x)</code>的问题.</p>
+<p>但是, 但就对称性而言, 当比较两者不属于同一个类时, 我们需要仔细考虑一下.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e.equals(m);</span><br></pre></td></tr></table></figure>
+
+<p>这里的<code>e</code>是一个<code>Employee</code>对象, <code>m</code>是一个<code>Manager</code>对象, 并且两个对象具有相同的姓名、薪水和雇佣日期. 如果在<code>Employee.equals()</code>中使用<code>instanceof</code>进行检测, 则返回<code>true</code>. 然而, 当我们反过来调用时,</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m.equals(e);</span><br></pre></td></tr></table></figure>
+
+<p>根据对称性, 我们也需要返回<code>true</code>. 这就使得<code>Manager</code>类的<code>equals()</code>方法必须能够用自己与任何一个<code>Employee</code>对象进行比较, 忽视了自己所拥有的特有信息. 这无疑是不合理的.</p>
+<p>本书认为:</p>
+<ol>
+<li>如果子类能够拥有自己的相等的概念, 则对称性要求强制采用<code>getClass()</code>进行检测;</li>
+<li>如果由父类决定相等的概念, 那么就可以使用<code>instanceof</code>进行检测, 这样可以在不同的对象之间进行相等的比较.</li>
+</ol>
+<p>同时, 本书给出一个比较合理的编写<code>equals()</code>方法的建议:</p>
+<ol>
+<li>显示参数命名为<code>otherObject</code>, 稍后需要将他转换成另一个叫做<code>other</code>的变量;</li>
+<li>检测<code>this</code>与<code>otherObject</code>是否引用同一个对象;</li>
+<li>检测<code>otherObject</code>是否为<code>null</code>, 如果为<code>null</code>, 则返回<code>false</code>;</li>
+<li>比较<code>this</code>与<code>otherObject</code>是否属于同一个类;</li>
+<li>将<code>otherObject</code>转换为相应的类类型变量;</li>
+<li>对所有需要比较的域进行比较. 如果所有的域都匹配, 就返回<code>true</code>; 反之, 则返回<code>false</code>.</li>
+</ol>
+<h4 id="hashCode-方法"><a href="#hashCode-方法" class="headerlink" title="hashCode()方法"></a><code>hashCode()</code>方法</h4><p>哈希值(Hash Code)是由对象导出的一个整型值, 无规律可言. 这使得两个不同对象的哈希值基本不会相等.</p>
+<p><code>String</code>类使用下列算法计算哈希值:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">hash</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; length(); i++) &#123;</span><br><span class="line">    hash = <span class="number">31</span> * hash + charAt(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于<code>hashCode()</code>方法定义在<code>Object</code>类中, 因此每个对象都有一个默认的哈希值, 其值为该对象的存储地址. 请看下面的例子:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line"><span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(s);</span><br><span class="line">System.out.println(s.hashCode() + <span class="string">&quot; &quot;</span> + sb.hashCode());</span><br><span class="line"><span class="type">String</span> <span class="variable">t</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;OK&quot;</span>);</span><br><span class="line"><span class="type">StringBuilder</span> <span class="variable">tb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(t);</span><br><span class="line">System.out.println(t.hashCode() + <span class="string">&quot; &quot;</span> + tb.hashCode());</span><br></pre></td></tr></table></figure>
+
+<p>结果如下:</p>
+<table>
+<thead>
+<tr>
+<th align="center">变量名</th>
+<th>哈希值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>s</code></td>
+<td>2524</td>
+</tr>
+<tr>
+<td align="center"><code>sb</code></td>
+<td>460141958</td>
+</tr>
+<tr>
+<td align="center"><code>t</code></td>
+<td>2524</td>
+</tr>
+<tr>
+<td align="center"><code>tb</code></td>
+<td>1163157884</td>
+</tr>
+</tbody></table>
+<p>我们可以发现, 字符串<code>s</code>和<code>t</code>拥有相同的哈希值, 这是因为字符串的哈希值是由内容导出的; 但是字符串缓冲<code>sb</code>和<code>tb</code>却有着不同的哈希值, 这是因为<code>StringBuilder</code>类总没有定义<code>hashCode()</code>方法, 故调用的实际上是<code>Object</code>类的默认<code>hashCode()</code>方法, 获得的即为其自身的存储地址.</p>
+<p>如果重新定义<code>equals()</code>方法, 我们就必须重新定义<code>hashCode()</code>方法, 以便用户可以将对象插入到哈希表中(具体内容会在后面详细论述).</p>
+<p><code>hashCode()</code>方法应该返回一个整型数值(可以为负), 并合理地组合实例域的哈希值, 以便能够让各个不同的对象产生的哈希值更加均匀. 例如下面就是<code>Employee</code>类的<code>hashCode()</code>方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">7</span> * name.hashCode()</span><br><span class="line">        + <span class="number">11</span> * <span class="keyword">new</span> <span class="title class_">Double</span>(salary).hashCode()</span><br><span class="line">        + <span class="number">13</span> * hireDay.hashCode();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该方法还有改进的空间. 首先, 最好使用<code>null</code>安全的<code>Object.hashCode()</code>. 如果其参数为<code>null</code>, 这个方法会直接返回0, 否则返回对参数调用<code>hashCode()</code>的结果.</p>
+<p>其次, 可以使用静态方法<code>Double.hashCode()</code>方法来避免创建<code>Double</code>对象:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">7</span> * Object.hashCode(name)</span><br><span class="line">        + <span class="number">11</span> * Double.hashCode(salary)</span><br><span class="line">        + <span class="number">13</span> * Object.hashCode(hireDay);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>还有改进的空间</strong>. 需要组合多个哈希值时, 可以调用<code>Objects.hash()</code>并提供多个参数. 这个方法会对各个参数调用<code>Object.hashCode()</code>, 并组合这些哈希值. 如此, <code>Employee.hashCode()</code>方法可以被简单地写为:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Objects.hash(name, salary, hireDay);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="toString-方法"><a href="#toString-方法" class="headerlink" title="toString()方法"></a><code>toString()</code>方法</h4><p>在<code>Object</code>中还有一个重要的方法, 即<code>toString()</code>方法. 它用于返回表示对象值的字符串. 下面是一个典型的例子: <code>Point</code>类的<code>toString()</code>方法将返回下面这样的字符串:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.awt.Point[x=<span class="number">10</span>,y=<span class="number">20</span>]</span><br></pre></td></tr></table></figure>
+
+<p>绝大多数的<code>toString()</code>方法都遵循这样的格式: 类的名字, 随后是一对方括号括起来的域值. 下面是<code>Employee</code>类中的<code>toString()</code>方法的实现:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Employee[name=&quot;</span> + name</span><br><span class="line">         + <span class="string">&quot;, salary=&quot;</span> + salary</span><br><span class="line">         + <span class="string">&quot;, hireDay=&quot;</span> + hireDay</span><br><span class="line">         + <span class="string">&quot;]&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实际上, 该方法还有改进空间. 最好通过掉调用<code>getClass().getName()</code>方法获得类名的字符串, 而不要将类名硬加到<code>toString()</code>方法中.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> getClass().getName()</span><br><span class="line">         + <span class="string">&quot;[name=&quot;</span> + name</span><br><span class="line">         + <span class="string">&quot;, salary=&quot;</span> + salary</span><br><span class="line">         + <span class="string">&quot;, hireDay=&quot;</span> + hireDay</span><br><span class="line">         + <span class="string">&quot;]&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>设计子类的程序员也应该定义自己的<code>toString()</code>方法, 并将子类域的描述添加进去. 如果父类中使用了<code>getClass().getName()</code>, 那么子类只要调用<code>super.toString()</code>方法就可以了.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Manager</span> <span class="keyword">extends</span> <span class="title class_">Employee</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>.toString()</span><br><span class="line">             + <span class="string">&quot;[bonus=&quot;</span> + bonus</span><br><span class="line">             + <span class="string">&quot;]&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>toString()</code>方法如此常见的原因为: 只要对象域一个字符串通过操作符”<code>+</code>“连接起来, Java编译器就会自动调用<code>toString()</code>方法, 以便获得这个对象的字符串描述. 此外, 对于任意对象<code>x</code>, 使用<code>println(x)</code>方法就会直接调用<code>x.toString()</code>, 并打印输出得到的字符串.</p>
+<h3 id="泛型数组列表"><a href="#泛型数组列表" class="headerlink" title="泛型数组列表"></a>泛型数组列表</h3><p>如何动态调整数组大小一直是一个让程序员头疼的问题. 幸好, 在Java中, 有一个名为<code>ArrayList</code>的类, 能够很好地解决这个问题.</p>
+<p><code>ArrayList</code>类是一个采用类型参数(type parameter)的泛型类(generic class). 为了指定数组列表保存的元素对象类型, 需要用一对尖括号将类名括起来加在后面. 下面的代码声明和构造了一个保存<code>Employee</code>类对象的数组列表:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Employee&gt; staff = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Employee&gt;();</span><br></pre></td></tr></table></figure>
+
+<p>既然两边都使用<code>Employee</code>, 重复输入多少有些繁琐, 故在Java SE 7中, 可省去右侧的类型参数:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Employee&gt; staff = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>add()</code>方法可以将元素添加到数组列表中.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">staff.add(<span class="keyword">new</span> <span class="title class_">Employee</span>(...));</span><br></pre></td></tr></table></figure>
+
+<p><code>ArrayList</code>类最大的优点在于其可以自动调整内部数组的大小. 但是, 如果已经清楚或能够估计出数组可能储存的元素数量, 我们就可以在填充数组之前调用<code>ensureCapacity()</code>方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">staff.ensureCapacity(<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这个方法将分配一个包含100个对象的内部数组. 然后调用100次<code>add()</code>, 而不用重新分配空间.</p>
+<p>另外, 还可以将初始容量传递给<code>ArrayList</code>构造器:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Employee&gt; staff = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>size()</code>方法将返回<code>ArrayList</code>中包含的<strong>实际元素数量</strong>.</p>
+<p>此外, 一旦确定<code>ArrayList</code>的大小不再发生变化, 就可以调用<code>trimToSize()</code>方法. 这个方法将存储区域的大小调整为当前元素数量所需要的存储空间数目, 垃圾回收器也会回收多余的存储空间.</p>
+<h4 id="访问数组列表元素"><a href="#访问数组列表元素" class="headerlink" title="访问数组列表元素"></a>访问数组列表元素</h4><p>想要访问或改变<code>ArrayList</code>元素, 需要使用<code>get</code>或<code>set</code>方法. 比如改变第<code>i</code>个元素的内容:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">staff.set(i, harry);</span><br></pre></td></tr></table></figure>
+
+<p>只有<code>i</code>小于或等于<code>ArrayList</code>大小时才能调用<code>set()</code>方法.</p>
+<p>此外, 当没有泛型类时, 原始的<code>ArrayList</code>类提供的<code>get()</code>方法别无选择, 只能返回<code>Object</code>对象. 从这类<code>ArrayList</code>中调用出来的对象需要进行类型转换:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Employee</span> <span class="variable">e</span> <span class="operator">=</span> (Employee) staff.get(i);</span><br></pre></td></tr></table></figure>
+
+<h4 id="类型化域原始数组列表的兼容性"><a href="#类型化域原始数组列表的兼容性" class="headerlink" title="类型化域原始数组列表的兼容性"></a>类型化域原始数组列表的兼容性</h4><p>在我们自己的代码中, 我们可能更愿意使用类型参数来增加安全性. 在本节中, 我们会了解如何与没有使用类型参数的遗留代码交互操作.</p>
+<p>假设有下面这个遗留下来的代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmployeeDB</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(ArrayList list)</span> &#123;...&#125;</span><br><span class="line">    <span class="keyword">public</span> ArrayList <span class="title function_">find</span><span class="params">(String query)</span> &#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以将一个类型化的数组传递给<code>update()</code>方法, 而不需要进行任何类型转换; 也可以将下面的<code>staff</code>对象传递给<code>updates()</code>方法.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Employee&gt; staff = ...;</span><br><span class="line">employeeDB.update(staff);</span><br></pre></td></tr></table></figure>
+
+<p>但是实际上, 这样调用说不上安全. 在<code>update()</code>方法中, 添加到<code>ArrayList</code>中的不一定是<code>Employee</code>对象. 编译器并不会发现这个问题, 但是在对这些元素进行检索的时候就会报错. 相反地, 将一个原始<code>ArrayList</code>赋给一个类型化<code>ArrayList</code>就会得到一个警告.</p>
+<p>此外, 就算使用了类型转换也并不能避免出现警告:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Employee&gt; result = (ArrayList&lt;Employee&gt;) employeeDB.find(query);</span><br></pre></td></tr></table></figure>
+
+<p>我们只能受到一个警告信息, 提醒我们类型转换有误.</p>
+<p>这是Java中不尽如人意的参数化类型的限制所带来的结果. 处于兼容性的考虑, 编译器在对类型转换进行检查之后, 如果没有发现违反规则的现象, 就将所有的类型化数组 列表转换成原始<code>ArrayList</code>对象. 在程序运行时, 所有的<code>ArrayList</code>都是一样的, 即没有虚拟机中的类型参数. 因此, 在执行将<code>ArrayList</code>转化为<code>ArrayList&lt;Employee&gt;</code>的操作时, 编译器将执行相同的运行时检查.</p>
+<p>此时我们无需多做什么, 只要在与剩下的代码进行交叉操作时, 研究一下比那一起的警告提示, 并确保这些警告不会造成太严重的后果就可以了. 一旦确保不会造成严重后果, 可以用<code>@SuppressWarnings(&quot;unchecked&quot;)</code>标注来标记这个变量能够接收类型转换,  如下所示:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span> ArrayList&lt;Employee&gt; result = (ArrayList&lt;Employee&gt;) employeeDB.find(query);</span><br></pre></td></tr></table></figure>
+
+<h4 id="对象包装器与自动装箱"><a href="#对象包装器与自动装箱" class="headerlink" title="对象包装器与自动装箱"></a>对象包装器与自动装箱</h4><p>有时需要将<code>int</code>这样的基本类型转换为对象. 每个primitive主数据类型都有一个包装用的类, 名为包装器(wrapper), 且这些包装类都放在<code>Java.lang</code>这个包中, 无需import. 这些包装类与其对应的primitive主数据类型如下表所示:</p>
+<table>
+<thead>
+<tr>
+<th>primitive主数据类型名称</th>
+<th>包装类名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>boolean</code></td>
+<td><code>Boolean</code></td>
+</tr>
+<tr>
+<td><code>char</code></td>
+<td><code>Character</code></td>
+</tr>
+<tr>
+<td><code>byte</code></td>
+<td><code>Byte</code></td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td><code>Short</code></td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>Integer</code></td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td><code>Long</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><code>Float</code></td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td><code>Double</code></td>
+</tr>
+</tbody></table>
+<p>对象包装器是不可变的, 即一旦构造了包装器, 就不允许改变包装在其中的值. 同时, 对象包装类还被标记为<code>final</code>, 无法被继承.</p>
+<p>此外, 还有一个很有用的特性, 使得向<code>ArrayList&lt;Integer&gt;</code>中添加<code>int</code>元素的过程更加方便. <code>list.add(3)</code>将被自动地转换为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.add(Integer.valueOf(<span class="number">3</span>));</span><br></pre></td></tr></table></figure>
+
+<p>这种转换被称为自动装箱(autoboxing).</p>
+<p>相反地, 将一个<code>Integer</code>对象赋值给一个<code>int</code>值时, 就会进行自动拆箱, 即将<code>int n = list.get(n)</code>翻译成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> list.get(i).intValue();</span><br></pre></td></tr></table></figure>
+
+<p>甚至在算数表达式中自动拆装箱也是成立的. 比如, 下面的这个表达式是合法的:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Integer</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line">n++;</span><br></pre></td></tr></table></figure>
+
+<p>大多数情况下, 容易有一种假象, 即基本类型与它们的对象包装器是一样的, 只是它们的相等性不同. 大家知道, <code>==</code>运算符也可以应用于对象包装器对象, 只不过检测的是对象是否指向同一个存储区域, 因此, 下面的比较通常不会成立:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Integer</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1000</span>;</span><br><span class="line"><span class="type">Integer</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">1000</span>;</span><br><span class="line"><span class="keyword">if</span> (a == b) &#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>的确相等表达式有时会成立, 但是我们的程序不能建立在这种<em>可能</em>上. 如果真的要判断两个<code>Integer</code>对象是否相等的话, 还是需要使用<code>equals()</code>方法.</p>
+<p>还有几点有关自动装箱的事情需要注意的. 首先, 由于包装类引用可以为<code>null</code>, 所以自动装箱有可能会抛出一个<code>NullPointerException</code>异常:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Integer</span> <span class="variable">n</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">System.out.println(<span class="number">2</span>*n);</span><br></pre></td></tr></table></figure>
+
+<p>另外, 如果在一个条件表达式中混用<code>Integer</code>和<code>Double</code>类型, <code>Integer</code>值就会拆箱, 提升为<code>double</code>, 并在此装箱为<code>Double</code>.</p>
+<p>最后, 自动拆装箱是<strong>编译器</strong>认可的, 和JVM没有什么关系. 编译器在生成的字节码中添加一些必要的方法调用, 而虚拟机只是忠实地执行这些字节码罢了.</p>
+<h4 id="参数数量可变的方法"><a href="#参数数量可变的方法" class="headerlink" title="参数数量可变的方法"></a>参数数量可变的方法</h4><h3 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h3><p>下面是一个典型的枚举类的例子:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">Size</span> &#123;SMALL, MEDIUM, LARGE, EXTRA_LARGE&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>此声明定义了一个有着四个实例的类, 在此尽量不要构造新对象. 因此, 在比较两个枚举类型的值时直接使用<code>==</code>即可.</p>
+<p>如有需要, 可以在枚举类中添加一些构造器、方法和域. 当然, 构造器只在构造枚举常量时被调用. 下面是一个例子:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">Size</span> &#123;</span><br><span class="line">    SMALL(<span class="string">&quot;S&quot;</span>), MEDIUM(<span class="string">&quot;M&quot;</span>), LARGE(<span class="string">&quot;L&quot;</span>), EXTRA_LARGE(<span class="string">&quot;XL&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> String abbreviation;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Size</span><span class="params">(String abbreviation)</span> &#123;<span class="built_in">this</span>.abbreviation = abbreviation;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getAbbreviation</span><span class="params">()</span> &#123;<span class="keyword">return</span> abbreviation;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所有的枚举类都是<code>Enum</code>类的子类. 它们继承了这个类的许多方法, 其中最有用的就是<code>toString()</code>方法. 这个方法能够返回枚举常量名. 例如, <code>Size.SMALL.toString()</code>将返回字符串”<code>SMALL</code>“.</p>
+<p><code>toString()</code>的逆方法是静态方法<code>valueOf()</code>. 例如, 语句</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Size</span> <span class="variable">s</span> <span class="operator">=</span> Enum.valueOf(Size.class, <span class="string">&quot;SMALL&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>将会把<code>s</code>设置为<code>Size.SMALL</code>.</p>
+<p>每个枚举类都有一个静态的<code>values</code>方法, 它将返回一个包含全部枚举值的数组. 例如, 如下调用:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Size[] values = Size.values()</span><br></pre></td></tr></table></figure>
+
+<p>将返回包含元素<code>Size.SMALL</code>, …和<code>Size.EXTRA_LARGE</code>的数组.</p>
+<p><code>ordinal()</code>方法返回<code>enum</code>生命中枚举常量的位置, 索引从零开始计数.</p>
+<h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3>
         </div>
 
         
