@@ -1,172 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="小苗">
-    
-    <title>
-        
-            Java核心技术卷1 |
-        
-        小苗的个人博客
-    </title>
-    
-<link rel="stylesheet" href="/css/style.css">
-
-    <link rel="shortcut icon" href="/images/logo.svg">
-    
-<link rel="stylesheet" href="/css/font-awesome.min.css">
-
-    <script id="hexo-configurations">
-    let KEEP = window.KEEP || {};
-    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
-    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
-  </script>
-<meta name="generator" content="Hexo 6.2.0"></head>
-
-
-<body>
-<div class="progress-bar-container">
-    
-
-    
-</div>
-
-
-<main class="page-container">
-
-    
-
-    <div class="page-main-content">
-
-        <div class="page-main-content-top">
-            <header class="header-wrapper">
-
-    <div class="header-content">
-        <div class="left">
-            
-            <a class="logo-title" href="/">
-                小苗的个人博客
-            </a>
-        </div>
-
-        <div class="right">
-            <div class="pc">
-                <ul class="menu-list">
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/"
-                            >
-                                HOME
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/archives"
-                            >
-                                ARCHIVES
-                            </a>
-                        </li>
-                    
-                    
-                </ul>
-            </div>
-            <div class="mobile">
-                
-                <div class="icon-item menu-bar">
-                    <div class="menu-bar-middle"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="header-drawer">
-        <ul class="drawer-menu-list">
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/">HOME</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/archives">ARCHIVES</a>
-                </li>
-            
-        </ul>
-    </div>
-
-    <div class="window-mask"></div>
-
-</header>
-
-
-        </div>
-
-        <div class="page-main-content-middle">
-
-            <div class="main-content">
-
-                
-                    <div class="fade-in-down-animation">
-    <div class="article-content-container">
-
-        <div class="article-title">
-            <span class="title-hover-animation">Java核心技术卷1</span>
-        </div>
-
-        
-            <div class="article-header">
-                <div class="avatar">
-                    <img src="/images/avatar.svg">
-                </div>
-                <div class="info">
-                    <div class="author">
-                        <span class="name">小苗</span>
-                        
-                            <span class="author-label">Lv1</span>
-                        
-                    </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-06-19 14:29:11</span>
-        <span class="mobile">2022-06-19 14:29</span>
-    </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/Java/">Java</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-
-    
-    
-    
-    
-</div>
-
-                    </div>
-                </div>
-            </div>
-        
-
-        <div class="article-content markdown-body">
-            <h2 id="Java程序设计概述"><a href="#Java程序设计概述" class="headerlink" title="Java程序设计概述"></a>Java程序设计概述</h2><h2 id="Java程序设计环境"><a href="#Java程序设计环境" class="headerlink" title="Java程序设计环境"></a>Java程序设计环境</h2><h2 id="Java的基本程序设计结构"><a href="#Java的基本程序设计结构" class="headerlink" title="Java的基本程序设计结构"></a>Java的基本程序设计结构</h2><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>从概念上讲, Java字符串就是Unicode字符序列. 例如, 串”Java\u2122”由5个Unicode字符J、a、v、a和™组成. Java没有内置的字符串类型, 而是在标准Java类库中提供了一个预定义类, 其很自然地叫做<code>String</code>. 每一个用双引号括起来的字符串都是<code>String</code>类的一个实例.</p>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Java核心技术卷1 - 小苗的个人博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="小苗的个人博客"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="小苗的个人博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Java程序设计概述Java程序设计环境Java的基本程序设计结构字符串从概念上讲, Java字符串就是Unicode字符序列. 例如, 串”Java\u2122”由5个Unicode字符J、a、v、a和™组成. Java没有内置的字符串类型, 而是在标准Java类库中提供了一个预定义类, 其很自然地叫做String. 每一个用双引号括起来的字符串都是String类的一个实例. 子串String类"><meta property="og:type" content="blog"><meta property="og:title" content="Java核心技术卷1"><meta property="og:url" content="http://example.com/2022/06/19/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B71/"><meta property="og:site_name" content="小苗的个人博客"><meta property="og:description" content="Java程序设计概述Java程序设计环境Java的基本程序设计结构字符串从概念上讲, Java字符串就是Unicode字符序列. 例如, 串”Java\u2122”由5个Unicode字符J、a、v、a和™组成. Java没有内置的字符串类型, 而是在标准Java类库中提供了一个预定义类, 其很自然地叫做String. 每一个用双引号括起来的字符串都是String类的一个实例. 子串String类"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://example.com/img/og_image.png"><meta property="article:published_time" content="2022-06-19T06:29:11.000Z"><meta property="article:modified_time" content="2022-06-27T12:13:52.663Z"><meta property="article:author" content="Arnold Miao"><meta property="article:tag" content="Java"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2022/06/19/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B71/"},"headline":"Java核心技术卷1","image":["http://example.com/img/og_image.png"],"datePublished":"2022-06-19T06:29:11.000Z","dateModified":"2022-06-27T12:13:52.663Z","author":{"@type":"Person","name":"Arnold Miao"},"publisher":{"@type":"Organization","name":"小苗的个人博客","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"Java程序设计概述Java程序设计环境Java的基本程序设计结构字符串从概念上讲, Java字符串就是Unicode字符序列. 例如, 串”Java\\u2122”由5个Unicode字符J、a、v、a和™组成. Java没有内置的字符串类型, 而是在标准Java类库中提供了一个预定义类, 其很自然地叫做String. 每一个用双引号括起来的字符串都是String类的一个实例. 子串String类"}</script><link rel="canonical" href="http://example.com/2022/06/19/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B71/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/xt256.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="小苗的个人博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-06-19T06:29:11.000Z" title="2022/6/19 14:29:11">2022-06-19</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-06-27T12:13:52.663Z" title="2022/6/27 20:13:52">2022-06-27</time></span><span class="level-item">3 hours read (About 25884 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">Java核心技术卷1</h1><div class="content"><h2 id="Java程序设计概述"><a href="#Java程序设计概述" class="headerlink" title="Java程序设计概述"></a>Java程序设计概述</h2><h2 id="Java程序设计环境"><a href="#Java程序设计环境" class="headerlink" title="Java程序设计环境"></a>Java程序设计环境</h2><h2 id="Java的基本程序设计结构"><a href="#Java的基本程序设计结构" class="headerlink" title="Java的基本程序设计结构"></a>Java的基本程序设计结构</h2><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>从概念上讲, Java字符串就是Unicode字符序列. 例如, 串”Java\u2122”由5个Unicode字符J、a、v、a和™组成. Java没有内置的字符串类型, 而是在标准Java类库中提供了一个预定义类, 其很自然地叫做<code>String</code>. 每一个用双引号括起来的字符串都是<code>String</code>类的一个实例.</p>
 <h4 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h4><p><code>String</code>类的<code>substring()</code>方法可以从一个较大的字符串中提取出一个字串. 如:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">greeting</span> <span class="operator">=</span> <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> greeting.substring(<span class="number">0</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
 
@@ -1136,169 +997,103 @@
 <p>下面 是超类型限定的另一种应用. <code>Comparable</code>接口本身就是一个泛型类型. 声明如下:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Comparable</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(T other)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        </div>
+<p>在此, 类型变量指示了<code>other</code>参数的类型. 例如, <code>String</code>类实现<code>Comparable&lt;String&gt;</code>, 它的<code>compareTo()</code>方法就被声明为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(String other)</span></span><br></pre></td></tr></table></figure>
 
-        
+<p>通过在接口中使用泛型, 我们就避免了在使用<code>Object</code>类时出现的强制类型转换问题.</p>
+<p>由于<code>Comparable</code>是一个泛型类型, 或许可以将<code>ArrayAlg</code>类的<code>min</code>方法做得更好一些? 可以这样声明:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T <span class="keyword">extends</span> <span class="title class_">Comparable</span>&lt;T&gt;&gt; T <span class="title function_">min</span><span class="params">(T[] a)</span></span><br></pre></td></tr></table></figure>
 
-        
-            <ul class="post-tags-box">
-                
-                    <li class="tag-item">
-                        <a href="/tags/Java/">#Java</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
+<p>看起来, 这样写比只使用<code>T extends Comparable</code>更彻底, 并且对许多类来讲, 工作得更好.</p>
+<h4 id="无限定通配符"><a href="#无限定通配符" class="headerlink" title="无限定通配符"></a>无限定通配符</h4><p>还可以使用无限定的通配符, 例如<code>Pair&lt;?&gt;</code>. 乍看起来, 这好像与原始的<code>Pair</code>类型一样. 实际上, 有很大的不同. 类型<code>Pair&lt;?&gt;</code>有以下方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">? getFirst()</span><br><span class="line"><span class="keyword">void</span> <span class="title function_">setFirst</span><span class="params">(?)</span></span><br></pre></td></tr></table></figure>
 
-        
-            <div class="article-nav">
-                
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
-                           href="/2022/06/12/java/"
-                        >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Java学习笔记</span>
-                                <span class="post-nav-item">Next posts</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
-        
+<p><code>getFirst()</code>的返回值只能赋给一个<code>Object</code>. <code>setFirst()</code>方法不能被调用, 甚至不能用<code>Object</code>调用. <code>Pair&lt;?&gt;</code>和<code>Pair</code>的不同在于: 可以用任意<code>Object</code>对象调用原始<code>Pair</code>类的<code>setObject()</code>方法.</p>
+<h4 id="通配符捕获"><a href="#通配符捕获" class="headerlink" title="通配符捕获"></a>通配符捕获</h4><h3 id="反射和泛型"><a href="#反射和泛型" class="headerlink" title="反射和泛型"></a>反射和泛型</h3><p>反射允许我们在运行时分析任意的对象. 如果对象是泛型类的实例, 关于泛型类型参数则得不到太多信息, 因为它们会被擦除. 在下面的小节中, 可以了解利用反射可以获得泛型类的什么信息.</p>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="Java集合框架"><a href="#Java集合框架" class="headerlink" title="Java集合框架"></a>Java集合框架</h3><h4 id="将集合的接口与实现分离"><a href="#将集合的接口与实现分离" class="headerlink" title="将集合的接口与实现分离"></a>将集合的接口与实现分离</h4><p>与现代的数据结构类库的常见情况一样, Java集合类库也将接口与实现分离. 首先, 我们看一下队列(queue)这一数据结构是如何分离的.</p>
+<p>队列接口指出可以在队列的尾部添加元素, 在队列的头部删除元素, 并且可以查找队列中元素的个数. 当需要收集对象, 并按照”先进先出”的规则检索对象时就应该使用队列.</p>
+<p>队列接口的最简形式可能会类似于:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Quece</span>&lt;E&gt; &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(E element)</span>;</span><br><span class="line">    E <span class="title function_">remove</span><span class="params">()</span>;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">size</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        
-    </div>
-</div>
+<p>这个接口并没有说明队列是如何实现的. 队列通常有两种实现方法: 一种是使用循环数组; 另一种是使用链表. 每一个实现都可以通过一个实现了<code>Queue</code>接口的类表示.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CircularArrayQueue</span>&lt;E&gt; <span class="keyword">implements</span> <span class="title class_">Queue</span>&lt;E&gt; &#123;    <span class="comment">// not an actual library class</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> head;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> tail;</span><br><span class="line"></span><br><span class="line">    CircularArrayQueue(<span class="type">int</span> capacity) &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(E element)</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> E <span class="title function_">remove</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">size</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> E[] elements;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LinkedListQueue</span>&lt;E&gt; <span class="keyword">implements</span> <span class="title class_">Queue</span>&lt;E&gt; &#123;   <span class="comment">// not an actual library class</span></span><br><span class="line">    <span class="keyword">private</span> link head;</span><br><span class="line">    <span class="keyword">private</span> link tail;</span><br><span class="line"></span><br><span class="line">    LinkListQueue() &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(E element)</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> E <span class="title function_">remove</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">size</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>当在程序中使用队列时, 一旦构建了集合就不需要知道究竟使用了哪种实现. 因此, 只有在构建集合对象时, 使用具体的类才有意义. 可以使用接口类型存放集合的引用.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Queue&lt;Customer&gt; expressLane = <span class="keyword">new</span> <span class="title class_">CircularArrayQueue</span>&lt;&gt;(<span class="number">100</span>);</span><br><span class="line">expressLane.add(<span class="keyword">new</span> <span class="title class_">Customer</span>(<span class="string">&quot;Harry&quot;</span>));</span><br></pre></td></tr></table></figure>
 
-                
-            </div>
+<p>利用这种方法, 一旦改变了想法, 就可以轻松地使用另外一种不同的实现. 只需要对程序的一个地方做出修改, 即调用构造器的地方. 如果觉得<code>LinkedListQueue</code>是个更好的选择, 就可以将代码修改为:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Queue&lt;Customer&gt; expressLane = <span class="keyword">new</span> <span class="title class_">LinkedListQueue</span>&lt;&gt;();</span><br><span class="line">expressLane.add(<span class="keyword">new</span> <span class="title class_">Customer</span>(<span class="string">&quot;Harry&quot;</span>));</span><br></pre></td></tr></table></figure>
 
-        </div>
+<p>为什么选择这种实现, 而不选择另一种实现呢? 接口本身并不能说明哪种实现的效率究竟如何. 循环数组比链表要高效, 因此多数人优先选择循环数组. 然而, 通常这样做也需要付出一定的代价.</p>
+<p>循环数组是一个有限集合, 容量有限; 如果程序中要收集的对象数量没有上限, 则最好使用链表来实现.</p>
+<h4 id="Collection接口"><a href="#Collection接口" class="headerlink" title="Collection接口"></a><code>Collection</code>接口</h4><p>在Java类库中, 集合类的基本接口是<code>Collection</code>接口. 这个接口有两个基本方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Collection</span>&lt;E&gt; &#123;</span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">add</span><span class="params">(E element)</span>;</span><br><span class="line">    Iterator&lt;E&gt; <span class="title function_">iterator</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="page-main-content-bottom">
-            <footer class="footer">
-    <div class="info-container">
-        <div class="copyright-info info-item">
-            &copy;
-            
-              <span>2020</span>
-              -
-            
-            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">小苗</a>
-        </div>
-        
-        <div class="theme-info info-item">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
-        </div>
-        
-        
-    </div>
-</footer>
+<p>除了这两个方法外, 还有几个方法, 稍后会继续介绍.</p>
+<p><code>add()</code>方法用于向集合中添加元素. 如果添加元素确实改变了结合, 就返回<code>true</code>; 反之, 则返回<code>false</code>. 例如, 如果试图向集合中添加一个对象, 而这个对象在集合中已经存在, 这个添加请求就没有实效, 因为集合中不允许有重复的对象.</p>
+<p><code>iterator()</code>方法用于返回一个实现了<code>Iterator</code>接口的对象. 可以使用这个迭代器对象依次访问集合中的元素.</p>
+<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p><code>Iterator</code>接口包含四个方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Iterator</span>&lt;E&gt; &#123;</span><br><span class="line">    E <span class="title function_">next</span><span class="params">()</span>;</span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">hasNext</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">remove</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">void</span> <span class="title function_">forEachRemaining</span><span class="params">(Consermer&lt;? <span class="built_in">super</span> E&gt; action)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        </div>
-    </div>
+<p>通过反复调用<code>next()</code>方法, 可以逐个访问集合中的每个元素. 不过在调用之前, 还是需要使用<code>hasNext()</code>方法来检验是否可以继续执行<code>next()</code>方法. 如果想要查看集合中的所有元素, 就请求一个迭代器, 并在<code>hasNext()</code>返回<code>true</code>时反复地调用<code>next()</code>方法. 例如:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Collection&lt;String&gt; c = ...;</span><br><span class="line">Iterator&lt;String&gt; iter = c.iterator();</span><br><span class="line"><span class="keyword">while</span> (iter.hasNext()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">element</span> <span class="operator">=</span> iter.next();</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
+<p>使用<code>for each</code>循环可以更加简练地表示同样的循环操作:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (String element : c) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <!-- go comment -->
-        
-    </ul>
-</div>
+<p>编译器将<code>for each</code>循环简单地翻译为带有迭代器的循环.</p>
+<p><code>for each</code>循环可以与任何实现了<code>Iterable</code>接口的对象一起工作, 这个接口只有一个抽象方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Iterable</span>&lt;E&gt; &#123;</span><br><span class="line">    Iterator&lt;E&gt; <span class="title function_">iterator</span><span class="params">()</span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        </div>
-    
+<p><code>Collection</code>接口扩展了<code>Iterable</code>接口. 因此, 对于标准类库中的任何集合都可以使用<code>for each</code>循环.</p>
+<h3 id="具体的集合"><a href="#具体的集合" class="headerlink" title="具体的集合"></a>具体的集合</h3><h4 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h4><p>数组的储存方式为在连续的存储位置上存放对象引用, 而<strong>链表</strong>则将对象存放在独立的结点中. 每个节点还存放着序列中下一个节点的引用. 在Java程序设计语言中, 所有链表实际上都是双向链接的, 即每个节点还存放着向前驱节点的引用.</p>
+<p>由此, 从链表中间删除一个元素是一件很轻松的事情, 仅需要更新被删除元素附近的链接即可.</p>
+<p>在下面的代码示例中, 先添加三个元素, 然后再将第二个元素删除:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; staff = <span class="keyword">new</span> <span class="title class_">LinkedList</span>();</span><br><span class="line">staff.add(<span class="string">&quot;Amy&quot;</span>);</span><br><span class="line">staff.add(<span class="string">&quot;Bob&quot;</span>);</span><br><span class="line">staff.add(<span class="string">&quot;Carl&quot;</span>);</span><br><span class="line"><span class="type">Iterator</span> <span class="variable">iter</span> <span class="operator">=</span> staff.iterator();</span><br><span class="line"><span class="type">String</span> <span class="variable">first</span> <span class="operator">=</span> iter.next();</span><br><span class="line"><span class="type">String</span> <span class="variable">second</span> <span class="operator">=</span> iter.next();</span><br><span class="line">iter.remove();</span><br></pre></td></tr></table></figure>
 
-    <div class="right-bottom-side-tools">
-        <div class="side-tools-container">
-    <ul class="side-tools-list">
-        <li class="tools-item tool-font-adjust-plus flex-center">
-            <i class="fas fa-search-plus"></i>
-        </li>
-
-        <li class="tools-item tool-font-adjust-minus flex-center">
-            <i class="fas fa-search-minus"></i>
-        </li>
-
-        <li class="tools-item tool-expand-width flex-center">
-            <i class="fas fa-arrows-alt-h"></i>
-        </li>
-
-        <li class="tools-item tool-dark-light-toggle flex-center">
-            <i class="fas fa-moon"></i>
-        </li>
-
-        <!-- rss -->
-        
-
-        
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="fas fa-arrow-up"></i>
-            </li>
-        
-
-        <li class="tools-item tool-scroll-to-bottom flex-center">
-            <i class="fas fa-arrow-down"></i>
-        </li>
-    </ul>
-
-    <ul class="exposed-tools-list">
-        <li class="tools-item tool-toggle-show flex-center">
-            <i class="fas fa-cog fa-spin"></i>
-        </li>
-        
-    </ul>
-</div>
-
-    </div>
-
-    
-
-    <div class="image-viewer-container">
-    <img src="">
-</div>
-
-
-    
-
-</main>
-
-
-
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/main.js"></script>
-
-<script src="/js/header-shrink.js"></script>
-
-<script src="/js/back2top.js"></script>
-
-<script src="/js/dark-light-toggle.js"></script>
-
-
-
-
-
-
-
-
-<div class="post-scripts">
-    
-</div>
-
-
-
-</body>
-</html>
+<p>但是, 链表与泛型集合之间的最大区别, 就是链表是一个<strong>有序集合</strong>. 这意味着每个队形的位置十分重要.</p>
+<h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h2></div><div class="article-licensing box"><div class="licensing-title"><p>Java核心技术卷1</p><p><a href="http://example.com/2022/06/19/Java核心技术卷1/">http://example.com/2022/06/19/Java核心技术卷1/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Arnold Miao</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2022-06-19</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2022-06-27</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Java/">Java</a></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/" alt="Alipay"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="/" alt="Wechat"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/06/28/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">算法入门</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/06/12/java/"><span class="level-item">Java学习笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">3</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-06-28T02:32:59.000Z">2022-06-28</time></p><p class="title"><a href="/2022/06/28/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/">算法入门</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-06-19T06:29:11.000Z">2022-06-19</time></p><p class="title"><a href="/2022/06/19/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%8D%B71/">Java核心技术卷1</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-06-12T13:12:09.000Z">2022-06-12</time></p><p class="title"><a href="/2022/06/12/java/">Java学习笔记</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-06-09T14:16:43.000Z">2022-06-09</time></p><p class="title"><a href="/2022/06/09/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">CSS学习笔记</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/06/"><span class="level-start"><span class="level-item">June 2022</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Algorithm/"><span class="tag">Algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Java/"><span class="tag">Java</span><span class="tag">2</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="小苗的个人博客" height="28"></a><p class="is-size-7"><span>&copy; 2022 Arnold Miao</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
